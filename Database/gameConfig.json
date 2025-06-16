@@ -1,0 +1,10 @@
+[
+    {
+        "version": "1.0.0",
+        "name":"gameVR",
+        "totalRooms": 3,
+        "gameTitle": "Hành Trình Qua Thời Gian - Thăng Long",
+        "language": "vi",
+        "spawnLocation": "lobby"
+    }
+]
