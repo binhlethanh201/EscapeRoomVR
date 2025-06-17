@@ -8,7 +8,7 @@ console.log("Serving static files from:", staticPath);
 
 app.use(express.static(staticPath));
 
-// Các route cụ thể
+// Xử lý các node ảo: room1, room2, room3
 const panoNodes = ['room1', 'room2', 'room3'];
 panoNodes.forEach(node => {
   app.get(`/${node}`, (req, res) => {
@@ -16,14 +16,9 @@ panoNodes.forEach(node => {
   });
 });
 
-// Route gốc
+// Mặc định chuyển về room1
 app.get('/', (req, res) => {
-  res.sendFile(path.join(staticPath, 'index.html'));
-});
-
-// Fallback route cho SPA
-app.use((req, res) => {
-  res.status(404).sendFile(path.join(staticPath, 'index.html'));
+  res.redirect('/room1');
 });
 
 app.listen(port, () => {
