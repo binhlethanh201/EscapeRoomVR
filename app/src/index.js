@@ -10,7 +10,6 @@ const route = require('./routes');
 const db = require('./config/db');
 db.connect();
 // app.use(morgan('combined'));
-
 app.engine('hbs', handlebars.engine({
   extname: ".hbs",
   helpers:{
@@ -28,3 +27,4 @@ route(app);
 app.listen(port, () => {
   console.log(`App listening on port: http://localhost:${port}`);
 });
+
