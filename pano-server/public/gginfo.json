@@ -15,7 +15,11 @@
 	"player": {
 		"js": "pano2vr_player.js"
 	},
+<<<<<<< Updated upstream
 	"creationdate": "2025-06-16T07:27:48.941Z",
+=======
+	"creationdate": "2025-06-18T08:35:31.643Z",
+>>>>>>> Stashed changes
 	"configuration": "pano.xml",
 	"preview": {
 		"img": "preview.jpg",
