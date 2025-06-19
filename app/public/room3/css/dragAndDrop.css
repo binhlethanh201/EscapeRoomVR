@@ -1,0 +1,54 @@
+.draggable {
+  width: 100%;
+  height: 200px;
+  border: 2px solid #4CAF50;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0fff0;
+  cursor: move;
+}
+.dropZone {
+  width: 100%;
+  height: 200px;
+  background-color: #f8f9fa;
+  border: 2px dashed #ccc;
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+  font-weight: bold;
+  color: #1e1c1c;
+}
+
+.draggable-img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  cursor: grab;
+  border: 2px solid #ccc;
+}
+#imagePool {
+  min-height: 200px;
+  padding: 10px;
+  background-color: #f1f1f1;
+  border: 2px solid #aaa;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+.container {
+  background-color: rgb(166, 209, 244); 
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+}
+
+
+

@@ -1,4 +1,55 @@
-<h1>
-    Room3: window 
-</h1>
-<button onclick="window.history.back()">Quay lại</button>
+<style>
+  body {
+    background-image: url('/room3/img/Window.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button-container {
+    background-color: rgba(255, 255, 255, 0.8); /* nền trắng mờ, dễ nhìn */
+    padding: 30px 50px;
+    border-radius: 12px;
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+    text-align: center;
+  }
+
+  .button-container h1 {
+    margin-bottom: 25px;
+    color: #333;
+  }
+
+  .btn-game {
+    margin: 0 15px;
+    padding: 12px 30px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    color: white;
+    background-color: #007bff;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+  }
+
+  .btn-game:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+<div class="button-container">
+    
+  <a href="/room3/minigame/fillInBlank" class="btn-game">Game Fill In Blank</a>
+  <a href="/room3/minigame/multipleChoice" class="btn-game">Game Multiple Choice</a>
+
+  <div style="margin-top: 25px;">
+    <button onclick="window.history.back()" class="btn btn-secondary">Quay lại</button>
+  </div>
+</div>
