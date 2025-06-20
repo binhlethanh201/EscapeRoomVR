@@ -1,50 +1,48 @@
-<div class="container">
-  <h1 class="mt-5 text-center">Drag and Drop</h1>
-
-  <!-- image pool -->
-  <div class="row mb-4 mt-4">
-    <div class="col-12 text-center">
-      <div id="imagePool" class="dropZone">
-        <img id="item1" src="/room3/img/minigame/son_mai_ha_thai.jpg" class="draggable-img" draggable="true" />
-        <img id="item2" src="/room3/img/minigame/lua_van_phuc.jpg" class="draggable-img" draggable="true" />
-        <img id="item3" src="/room3/img/minigame/com_lang_vong.jpg" class="draggable-img" draggable="true" />
-        <img id="item4" src="/room3/img/minigame/gom_bat_trang.jpg" class="draggable-img" draggable="true" />
-      </div>
+<h1 class="mt-5 text-center">Drag and Drop</h1>
+<!-- image pool -->
+<div class="row mb-4 mt-4">
+  <div class="col-12 text-center">
+    <div id="imagePool" class="dropZone">
+      <img id="item1" src="/room3/img/minigame/son_mai_ha_thai.jpg" class="draggable-img" draggable="true" />
+      <img id="item2" src="/room3/img/minigame/lua_van_phuc.jpg" class="draggable-img" draggable="true" />
+      <img id="item3" src="/room3/img/minigame/com_lang_vong.jpg" class="draggable-img" draggable="true" />
+      <img id="item4" src="/room3/img/minigame/gom_bat_trang.jpg" class="draggable-img" draggable="true" />
     </div>
-  </div>
-
-  <!-- drop zones -->
-  <div class="row text-center">
-    <div class="col-lg-3">
-      <div class="dropZone border" data-accept="item4"></div>
-      <h5>Làng gốm Bát Tràng</h5>
-    </div>
-    <div class="col-lg-3">
-      <div class="dropZone border" data-accept="item1"></div>
-      <h5>Làng sơn mài Hạ Thái</h5>
-    </div>
-    <div class="col-lg-3">
-      <div class="dropZone border" data-accept="item2"></div>
-      <h5>Làng lụa Vạn Phúc</h5>
-    </div>
-    <div class="col-lg-3">
-      <div class="dropZone border" data-accept="item3"></div>
-      <h5>Làng làm cốm Vòng</h5>
-    </div>
-  </div>
-
-  <!-- buttons -->
-  <div class="text-center mt-4">
-    <button id="submitBtn" class="btn btn-primary">Submit</button>
-    <button id="resetBtn" class="btn btn-secondary ms-2">Reset</button>
-    <h4 id="result" class="mt-3"></h4>
-  </div>
-
-  <div class="text-center mt-4">
-    <button onclick="window.history.back()" class="btn btn-outline-dark">Quay lại</button>
   </div>
 </div>
 
-<!-- CSS & JS -->
+<!-- drop zones -->
+<div class="row text-center">
+  <div class="col-lg-3">
+    <div class="dropZone border" data-accept="item4"></div>
+    <h5>Làng gốm Bát Tràng</h5>
+  </div>
+  <div class="col-lg-3">
+    <div class="dropZone border" data-accept="item1"></div>
+    <h5>Làng sơn mài Hạ Thái</h5>
+  </div>
+  <div class="col-lg-3">
+    <div class="dropZone border" data-accept="item2"></div>
+    <h5>Làng lụa Vạn Phúc</h5>
+  </div>
+  <div class="col-lg-3">
+    <div class="dropZone border" data-accept="item3"></div>
+    <h5>Làng làm cốm Vòng</h5>
+  </div>
+</div>
+
+<!-- buttons -->
+<div class="text-center mt-4">
+  <button id="submitBtn" class="btn btn-primary">Submit</button>
+  <button id="resetBtn" class="btn btn-secondary ms-2">Reset</button>
+  <h4 id="result" class="mt-3"></h4>
+</div>
+
+<!-- back button -->
+<div class="text-center mt-4">
+  <a href="http://localhost:8080/room3" class="btn btn-outline-dark">Quay lại</a>
+</div>
+
+<!-- CSS and JS -->
 <link rel="stylesheet" href="/room3/css/dragAndDrop.css" />
 <script src="/room3/js/dragAndDrop.js" defer></script>
