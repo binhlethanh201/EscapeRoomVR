@@ -1,6 +1,6 @@
 [
     {
-        "id": "room3",
+        "_id": "room3",
         "name": "Tương Lai",
         "theme": "Tri thức và Phát triển",
         "description": "Phòng ngủ hiện đại tích hợp công nghệ với các yếu tố tri thức và giá trị truyền thống.",
@@ -14,7 +14,7 @@
         "completedInfor": "Những yếu tố cốt lõi hình thành nên một con người bao gồm: Lịch Sử - Văn Hoá - Gia Đình - Giáo Dục - Ngôn Ngữ - Niềm Tin - Kinh Nghiệm Sống - Cộng Đồng - Di Truyền.",
         "panoramaFile": "room3_main_panorama.jpg",
         "backgroundMusic": "music.mp3",
-        "hotspots": {
+        "hotspot": {
             "painting": {
                 "id": "room3Painting",
                 "name": "Di sản Văn hóa Thủ đô",
@@ -23,7 +23,7 @@
                 "isRequired": true,
                 "message": "Bạn đã khám phá di sản văn hóa làng nghề truyền thống!",
                 "hint": "",
-                "minigame": {
+                "interactionData": {
                     "type": "dragAndDrop",
                     "title": "Làng Nghề Truyền Thống",
                     "config": {
@@ -99,7 +99,7 @@
                 "isRequired": true,
                 "message": "Bạn đã khám phá được manh mối về Tinh thần cộng đồng là sức mạnh của xã hội!",
                 "hint": "",
-                "minigame": [
+                "interactionData": [
                     {
                         "id": "multipleChoice",
                         "name": "Hãy Chọn Đáp Án Đúng",

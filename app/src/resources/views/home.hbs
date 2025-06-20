@@ -7,7 +7,7 @@
 =======
 <!DOCTYPE html>
 <html lang="vi">
-    <head>
+<head>
     <meta charset="UTF-8">
     <title>Play now!</title>
     <style>
@@ -33,7 +33,8 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 8px; /* Khoảng cách giữa các nút */
+            gap: 8px;
+            /* Khoảng cách giữa các nút */
             margin-top: 330px;
         }
 
@@ -57,11 +58,10 @@
 <body>
     <div><img src="/app/public/image/start_background.jpg" alt="background" style="display: none;"></div>
     <div class="button-container">
-    <button onclick="redirectToLink()">Play now!</button>
-    <button>Continuous</button>
-    <button>Setting</button>
+        <button onclick="redirectToLink()">Play now!</button>
+        <button>Continuous</button>
+        <button>Setting</button>
     </div>
-    
     <script>
         function redirectToLink() {
             window.location.href = "http://localhost:8080";

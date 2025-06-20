@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiple Choice</title>
+    <link rel="stylesheet" href="/room3/css/multipleQuestion.css">
+</head>
+<body>
+    <div id="quiz-container">
+        <h1 id="question"></h1>
+        <div id="options"></div>
+        <div id="result"></div>
+        <button id="submit-button">Submit</button>
+    </div>
+    <script>
+        const questions = {{{ json questions }}};
+    </script>
+    <script src="/room3/js/multipleQuestion.js"></script>
+</body>
+</html>

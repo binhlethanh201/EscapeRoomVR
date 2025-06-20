@@ -1,95 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <title>{{minigame.name}}</title>
-    <style>
-      body {
-        font-family: Arial, sans-serif;
-        padding: 1em;
-        background: #f0f8ff;
-      }
-      #game-container {
-        max-width: 600px;
-        margin: 0 auto;
-        padding: 1em;
-        background: rgb(240 248 255 / 0.9);
-        border-radius: 8px;
-        box-shadow: 0 0 10px #aaa;
-      }
-      input[type="text"] {
-        font-size: 1.1em;
-        padding: 0.4em;
-        margin-left: 0.3em;
-        width: 180px;
-      }
-      #result {
-        margin-top: 1em;
-        font-weight: bold;
-      }
-      #result.correct {
-        color: green;
-      }
-      #result.incorrect {
-        color: red;
-      }
-      button {
-        margin-top: 1.2em;
-        padding: 0.6em 1.2em;
-        font-size: 1em;
-        cursor: pointer;
-      }
-      #hint {
-        margin-top: 1em;
-        font-style: italic;
-        color: #555;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <title>Fill in the Blank</title>
+  <link rel="stylesheet" href="/room3/css/fillInBlank.css">
 </head>
 <body>
   <div id="game-container">
-    <h1>{{minigame.name}}</h1>
-    <p>
-      {{!-- Thay thế dấu ___ bằng ô input --}}
-      {{#replace minigame.question "___"}}
-        <input type="text" id="answer-input" autocomplete="off" />
-      {{/replace}}
-    </p>
-
-    <button id="submit-button">Submit Answer</button>
-
-    <div id="result"></div>
-
-    {{#if minigame.hint}}
-      <div id="hint"><strong>Hint:</strong> {{minigame.hint}}</div>
-    {{/if}}
+    <div class="row">
+      <h1>Fill in the Blanks</h1>
+      <p id="sentence"></p>
+      <div id="result"></div>
+    </div>
+    <div class="row">
+      <button id="submit-button">Submit Answers</button>
+    </div>
   </div>
-
   <script>
-    // Lấy dữ liệu đáp án từ server (từ biến minigame.answer)
-    // answer có thể là mảng (đáp án đúng có thể nhiều)
-    const correctAnswers = {{json minigame.answer}}.map(ans => ans.toLowerCase().trim());
-
-    function checkAnswer() {
-      const userAnswer = document.getElementById('answer-input').value.trim().toLowerCase();
-      const resultElement = document.getElementById('result');
-      resultElement.classList.remove('correct', 'incorrect');
-
-      if (correctAnswers.includes(userAnswer)) {
-        resultElement.textContent = "Correct! 🎉";
-        resultElement.classList.add('correct');
-
-        // Có thể redirect hoặc xử lý tiếp sau khi đúng
-        setTimeout(() => {
-          window.location.href = "/room3";  // ví dụ chuyển về room3 sau khi passed
-        }, 1500);
-      } else {
-        resultElement.textContent = "Wrong! Try again.";
-        resultElement.classList.add('incorrect');
-      }
-    }
-
-    document.getElementById('submit-button').addEventListener('click', checkAnswer);
+    const sentenceData = {{{ json sentenceData }}};
   </script>
+  <script src="/room3/js/fillInBlank.js"></script>
 </body>
 </html>

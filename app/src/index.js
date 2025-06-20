@@ -6,21 +6,31 @@ const app = express();
 const port = 3000;
 
 //connect database
-const route = require('./routes');
-const db = require('./config/db');
+const route = require("./routes");
+const db = require("./config/db");
 db.connect();
 // app.use(morgan('combined'));
 
-app.engine('hbs', handlebars.engine({
-  extname: ".hbs",
-  helpers:{
-  }
-}));
-app.set('view engine', 'hbs');
+app.engine(
+  "hbs",
+  handlebars.engine({
+    extname: ".hbs",
+    helpers: {
+      json: function (context) {
+        return JSON.stringify(context, null, 2);
+      },
+    },
+  })
+);
+app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
+<<<<<<< Updated upstream
 
+=======
+app.use(express.static(path.join(__dirname, "../public")));
+>>>>>>> Stashed changes
 app.get("/", (req, res) => {
-  res.render('home');
+  res.render("home");
 });
 
 route(app);
