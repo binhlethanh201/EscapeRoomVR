@@ -48,7 +48,7 @@ submitBtn.addEventListener("click", () => {
   });
 
   if (correct === dropZones.length) {
-    result.textContent = "Passed!";
+    result.textContent = "Passed!...";
     result.style.color = "green";
       // Chờ 1 giây rồi chuyển hướng
   setTimeout(() => {
