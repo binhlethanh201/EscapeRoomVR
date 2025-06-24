@@ -1,19 +1,60 @@
-.draggable {
-  width: 100%;
-  height: 200px;
-  border: 2px solid #4CAF50;
-  margin-bottom: 10px;
+/* Body */
+body {
+  background-color: #eaf4fc;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+/* Image Pool */
+#imagePool {
+  min-height: 220px;
+  padding: 15px;
+  background-color: #f9f9f9;
+  border: 2px dashed #bbb;
   display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
   align-items: center;
   justify-content: center;
-  background-color: #f0fff0;
-  cursor: move;
+  border-radius: 12px;
+  transition: background-color 0.3s;
 }
+/* Image Pool hover */
+#imagePool:hover {
+  background-color: #eef6f9;
+}
+/* Draggable Images */
+.draggable-img {
+  width: 130px;
+  height: 130px;
+  object-fit: cover;
+  cursor: grab;
+  border-radius: 8px;
+  border: 2px solid #ddd;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, border-color 0.2s;
+}
+/* Draggable Images active */
+.draggable-img:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+  border-color: #4caf50;
+}
+/* Drop Zones */
 .dropZone {
   width: 100%;
   height: 200px;
-  background-color: #f8f9fa;
-  border: 2px dashed #ccc;
+  background-color: #f4f6f8;
+  border: 2px dashed #999;
   margin-top: 10px;
   display: flex;
   justify-content: center;
@@ -21,34 +62,63 @@
   overflow: hidden;
   position: relative;
   font-weight: bold;
-  color: #1e1c1c;
+  color: #333;
+  border-radius: 12px;
+  transition: background-color 0.3s, border-color 0.3s;
+}
+/* Drop Zones hover */
+.dropZone:hover {
+  background-color: #e3f2fd;
+  border-color: #007bff;
+}
+/* Drop Zones filled*/
+.dropZone.filled {
+  border-style: solid;
+  background-color: #d0f0c0;
 }
 
-.draggable-img {
-  width: 150px;
-  height: 150px;
-  object-fit: cover;
-  cursor: grab;
-  border: 2px solid #ccc;
+/* Labels under drop zones */
+h5 {
+  margin-top: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #2e2e2e;
 }
-#imagePool {
-  min-height: 200px;
-  padding: 10px;
-  background-color: #f1f1f1;
-  border: 2px solid #aaa;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  justify-content: flex-start;
-  position: relative;
+/* Buttons */
+button {
+  padding: 10px 20px;
+  font-size: 1rem;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.2s;
 }
-.container {
-  background-color: rgb(166, 209, 244); 
-  padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+/* Submit Buttons */
+#submitBtn {
+  background-color: #28a745;
+  border: none;
+  color: white;
+}
+/* Submit Buttons hover*/
+#submitBtn:hover {
+  background-color: #218838;
+  transform: scale(1.05);
+}
+/* Reset Buttons */
+#resetBtn {
+  background-color: #6c757d;
+  border: none;
+  color: white;
+}
+/* Reset Buttons hover*/
+#resetBtn:hover {
+  background-color: #5a6268;
+  transform: scale(1.05);
 }
 
+.btn-outline-dark {
+  border-radius: 8px;
+}
 
-
+#result {
+  font-weight: bold;
+  color: #d63384;
+}

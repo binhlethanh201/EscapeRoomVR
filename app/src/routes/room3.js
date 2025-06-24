@@ -1,10 +1,11 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const Room3Controller = require('../app/controllers/Room3Controller');
+const Room3Controller = require("../app/controllers/Room3Controller");
 
-router.get('/hotspot/window', Room3Controller.window);
-router.get('/minigame/fillInBlank', Room3Controller.fillInBlank);
-router.get('/hotspot/painting', Room3Controller.painting);
-router.get('/hotspot/desk', Room3Controller.desk);
-router.get('/hotspot/door', Room3Controller.door);
+router.get("/hotspot/painting", Room3Controller.painting);
+router.get("/hotspot/window", Room3Controller.showWindow);
+router.get("/minigame/fillinblank", Room3Controller.fillInBlankGame);
+router.get("/minigame/multiplequestion", Room3Controller.multipleQuestionGame);
+router.get("/", Room3Controller.index);
+
 module.exports = router;

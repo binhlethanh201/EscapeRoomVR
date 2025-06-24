@@ -1,11 +1,11 @@
 [
     {
-        "id": "lobby",
+        "_id": "lobby",
         "name": "Sảnh Chính",
         "description": "Không gian trung tâm với cổng dẫn đến các phòng khám phá",
         "panoramaFile": "lobby_main_panorama.jpg",
         "backgroundMusic": "music.mp3",
-        "hotspots": {
+        "hotspot": {
             "gameProgress": {
                 "id": "gameProgress",
                 "name": "Bảng Tiến Trình",

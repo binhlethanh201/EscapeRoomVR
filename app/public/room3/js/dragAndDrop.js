@@ -1,5 +1,5 @@
 const imagePool = document.getElementById("imagePool");
-const dropZones = document.querySelectorAll(".dropZone.border"); 
+const dropZones = document.querySelectorAll(".dropZone.border");
 const submitBtn = document.getElementById("submitBtn");
 const result = document.getElementById("result");
 
@@ -17,8 +17,8 @@ function addDragStartListeners() {
 addDragStartListeners();
 [...dropZones, imagePool].forEach((zone) => {
   zone.addEventListener("dragover", (e) => e.preventDefault());
-  
-//event drop
+
+  //event drop
   zone.addEventListener("drop", (e) => {
     e.preventDefault();
     const imgId = e.dataTransfer.getData("text/plain");
@@ -27,7 +27,7 @@ addDragStartListeners();
     if (!img) return;
 
     if (zone !== imagePool) {
-      const oldImg = zone.querySelector('img');
+      const oldImg = zone.querySelector("img");
       if (oldImg) oldImg.remove();
     }
     zone.appendChild(img);
@@ -39,9 +39,9 @@ addDragStartListeners();
 // submit button
 submitBtn.addEventListener("click", () => {
   let correct = 0;
-  dropZones.forEach(zone => {
+  dropZones.forEach((zone) => {
     const expectedId = zone.dataset.accept;
-    const droppedImg = zone.querySelector('img');
+    const droppedImg = zone.querySelector("img");
     if (droppedImg && droppedImg.id === expectedId) {
       correct++;
     }
@@ -50,10 +50,9 @@ submitBtn.addEventListener("click", () => {
   if (correct === dropZones.length) {
     result.textContent = "Passed!...";
     result.style.color = "green";
-      // Chờ 1 giây rồi chuyển hướng
-  setTimeout(() => {
-    window.location.href = "http://localhost:8080/room3";
-  }, 1000);
+    setTimeout(() => {
+      window.location.href = "http://localhost:8080/room3";
+    }, 1000);
   } else {
     result.textContent = "Incorrect! Resetting...";
     result.style.color = "red";
@@ -66,7 +65,7 @@ submitBtn.addEventListener("click", () => {
         }
       });
       result.textContent = "";
-    }, 1500);
+    }, 1000);
   }
 });
 
@@ -74,7 +73,7 @@ submitBtn.addEventListener("click", () => {
 const resetBtn = document.getElementById("resetBtn");
 resetBtn.addEventListener("click", () => {
   //Di chuyển lại imagePool
-  dropZones.forEach(zone => {
+  dropZones.forEach((zone) => {
     const img = zone.querySelector("img");
     if (img) {
       imagePool.appendChild(img);
@@ -84,4 +83,3 @@ resetBtn.addEventListener("click", () => {
 
   result.textContent = ""; //message clear
 });
-

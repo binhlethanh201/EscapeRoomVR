@@ -190,10 +190,10 @@
       <label height="20" textcolor="0x000000" border="1" width="180" enabled="1" bordercolor="0x000000" wordwrap="1" backgroundalpha="1" borderradius="1" textalpha="1" background="1" backgroundcolor="0xffffff" borderalpha="1"/>
       <polystyle bordercolor="0x0000ff" handcursor="1" backgroundcolor="0x0000ff" backgroundalpha="0.25098" mode="0" borderalpha="1"/>
       <hotspot id="Point01" skinid="ht_node" tilt="13.1" use3D="0" customimagewidth="64" fov="10" customimageheight="64" description="" url="{node3}" customimage="media/icons8-xbox-x-64-1.png" pan="-31.31" target="-22.4/1.9/133.2" title="" distance3D="365.762"/>
-      <polyhotspot id="Poly01" target="_blank" title="Multiple Question" description="" url="http://localhost:3000/room3/hotspot/window">
+      <polyhotspot id="Poly01" target="_self" title="Multiple Question" description="" url="http://localhost:3000/room3/minigame/multiplequestion">
         <polystring>-355.37/21.04|-351.3/21.29|-342.57/-8.06|-340.64/-15.27|-342.12/-20.38|-342.42/-22.73|-343.2/-25.37|-1.16/-26.4|-3.81/-19.94|-5.13/-14.8|-4.14/-11.36|-3.32/-9.28</polystring>
       </polyhotspot>
-      <polyhotspot id="Poly02" target="_blank" title="Fill In Blank" description="" url="http://localhost:3000/room3/hotspot/window">
+      <polyhotspot id="Poly02" target="_self" title="Fill In Blank" description="" url="http://localhost:3000/room3/minigame/fillinblank">
         <polystring>-329.78/-0.07|-332.02/-0.22|-336.8/-15.45|-337.92/-16.28|-338.06/-17.41|-337.22/-19.5|-336.11/-21.59|-335.3/-23.51|-331.51/-23.65|-325.26/-21.76|-324.18/-19.39</polystring>
       </polyhotspot>
     </hotspots>
