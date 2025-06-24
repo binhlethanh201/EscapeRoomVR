@@ -11,7 +11,7 @@
         "panoramaFile": "room2_main_panorama.jpg",
         "backgroundMusic": "music.mp3",
         "hotspots": {
-            "painting": {
+            "paint": {
                 "id": "room2Painting",
                 "name": "Bức tranh về Văn Miếu",
                 "type": "minigame",
