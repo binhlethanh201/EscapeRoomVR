@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Play now!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url('/image/start_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .login-container {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 16px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 300px;
+    }
+
+    .login-container h1 {
+      color: #fff;
+      margin-bottom: 24px;
+      font-size: 28px;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    }
+
+    label {
+      display: block;
+      margin-bottom: 6px;
+      color: #fff;
+      text-align: left;
+      font-weight: 600;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      margin-bottom: 16px;
+      outline: none;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #8a2e0f;
+      border: none;
+      color: #fff;
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #641f08;
+    }
+
+    .error-message {
+      color: #ffcccc;
+      background-color: rgba(255, 0, 0, 0.2);
+      padding: 8px;
+      border-radius: 6px;
+      margin-bottom: 16px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="login-container">
+    <h1>Login</h1>
+    <form action="/login" method="POST">
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required value="{{username}}">
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+      {{#if error}}
+      <div class="error-message">{{error}}</div>
+      {{/if}}
+      <button type="submit">Login</button>
+    </form>
+  </div>
+</body>
+
+</html>

@@ -48,7 +48,7 @@ submitBtn.addEventListener("click", () => {
   });
 
   if (correct === dropZones.length) {
-    result.textContent = "Passed!";
+    result.textContent = "Passed!...";
     result.style.color = "green";
     setTimeout(() => {
       window.location.href = "http://localhost:8080/room3";
