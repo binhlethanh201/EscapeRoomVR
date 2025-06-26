@@ -24,15 +24,9 @@ app.engine(
 );
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "resources", "views"));
-<<<<<<< HEAD
-app.use(express.static(path.join(__dirname, '../public')));
-=======
-<<<<<<< Updated upstream
 
-=======
 app.use(express.static(path.join(__dirname, "../public")));
->>>>>>> Stashed changes
->>>>>>> 86408ccd61fa5fb9b17071cffd5989e05de9c620
+
 app.get("/", (req, res) => {
   res.render("home");
 });

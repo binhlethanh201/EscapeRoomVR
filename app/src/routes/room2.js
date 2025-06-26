@@ -7,6 +7,7 @@ router.get("/test", (req, res) => {
 router.get('/hotspot/painting',Room2Controller.painting);
 router.get('/hotspot/poster',Room2Controller.poster);
 router.get('/hotspot/board',Room2Controller.board);
+router.get('/hotspot/door',Room2Controller.board);
 router.get("/api/rooms", async (req, res) => {
   try {
     const rooms = await Room2.find();
