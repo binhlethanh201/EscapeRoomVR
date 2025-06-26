@@ -13,11 +13,11 @@ const UserSchema = new Schema({
     avatar: String,
     school: String,
     grade: String,
-    createdAt: Date
+    createdAt: Date,
   },
   status: String,
   lastLogin: Date,
-  currentSessionId: String
+  currentSessionId: String,
 });
 
 module.exports = mongoose.model("User", UserSchema);

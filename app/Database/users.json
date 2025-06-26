@@ -1,6 +1,6 @@
 [
      {
-            "_userId": "user1",
+            "_id": "user1",
             "email": "player1@example.com",
             "username": "user1",
             "password": "123",
@@ -22,7 +22,7 @@
             "currentSessionId": "session_1"
         },
         {
-            "_userId": "user2",
+            "_id": "user2",
             "email": "player2@example.com",
             "username": "user2",
             "password": "123",
@@ -44,7 +44,7 @@
             "currentSessionId": "session_2"
         },
         {
-            "_userId": "admin1",
+            "_id": "admin1",
             "email": "admin1@example.com",
             "username": "admin1",
             "password": "123",
@@ -63,7 +63,7 @@
             "currentSessionId": "session_3"
         },
         {
-            "_userId": "admin2",
+            "_id": "admin2",
             "email": "admin2@example.com",
             "username": "admin2",
             "password": "123",

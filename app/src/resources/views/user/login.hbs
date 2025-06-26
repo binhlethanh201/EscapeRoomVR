@@ -89,20 +89,30 @@
 
 <body>
   <div class="login-container">
-    <h1>Login</h1>
+    <h1>ĐĂNG NHẬP</h1>
     <form action="/login" method="POST">
       <div>
-        <label for="username">Username:</label>
+        <label for="username">Tên Đăng Nhập:</label>
         <input type="text" id="username" name="username" required value="{{username}}">
       </div>
       <div>
-        <label for="password">Password:</label>
+        <label for="password">Mật Khẩu:</label>
         <input type="password" id="password" name="password" required>
       </div>
       {{#if error}}
       <div class="error-message">{{error}}</div>
       {{/if}}
-      <button type="submit">Login</button>
+      <button type="submit">Đăng Nhập</button>
+
+      <div style="margin-top: 12px;">
+        <a href="/forgotpassword" style="color: #fff; text-decoration: underline; font-size: 14px;">Quên mật khẩu?</a>
+      </div>
+
+      <hr>
+      <a href="/register">
+        <button type="button" style="margin-top: 12px;">Tạo Tài Khoản Mới</button>
+      </a>
+
     </form>
   </div>
 </body>

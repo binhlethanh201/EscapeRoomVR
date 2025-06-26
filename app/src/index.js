@@ -4,6 +4,7 @@ const handlebars = require("express-handlebars");
 const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require("cors");
+const moment = require("moment");
 const route = require("./routes");
 const app = express();
 const port = 3000;
@@ -33,7 +34,6 @@ app.use(session({
   }
 }));
 
-
 //view engine bằng handlebars (hbs)
 app.engine(
   "hbs",
@@ -43,6 +43,9 @@ app.engine(
       json: function (context) {
         return JSON.stringify(context, null, 2);
       },
+        formatDate: (date) => {
+      return moment(date).format("HH:mm:ss - DD/MM/YYYY");
+    },
     },
   })
 );
@@ -59,7 +62,6 @@ app.get("/", (req, res) => {
   }
   res.render("user/login");
 });
-
 
 //truyền app vào route để khai báo các routes ở path routes
 route(app);

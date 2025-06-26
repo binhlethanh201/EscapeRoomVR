@@ -1,33 +1,34 @@
 const Authentication = require("../app/models/authentication");
 
-//kiểm tra xác thực phiên đăng nhập (session + token JWT)
+// Middleware kiểm tra người dùng đã đăng nhập và token còn hạn
 module.exports = async function (req, res, next) {
   try {
-    //check xem session có userId hay không (login chưa?)
+    // Kiểm tra session có userId hay chưa
     if (!req.session.userId) {
-      return res.redirect("/"); //chuyển hướng về trang đăng nhập
-    }
-    //tìm token JWT trong DB
-    const tokenRecord = await Authentication.findOne({
-      userId: req.session.userId,
-    });
-    //hủy session và redirect về login khi không thấy
-    if (!tokenRecord) {
-      await req.session.destroy(() => {});
       return res.redirect("/");
     }
-    //kiểm tra token còn hạn không
+    // Tìm bản ghi token theo userId
+    const tokenRecord = await Authentication.findOne({ userId: req.session.userId });
+    // Nếu không tìm thấy token => xóa session và chuyển hướng về login
+    if (!tokenRecord) {
+      req.session.destroy(() => {
+        return res.redirect("/");
+      });
+      return;
+    }
+    // Kiểm tra thời gian hết hạn
     const now = new Date();
     if (now > tokenRecord.expiresAt) {
-      //nếu token đã hết hạn thì xóa token trong DB
       await Authentication.deleteOne({ userId: req.session.userId });
-      //hủy session hiện tại
-      await req.session.destroy(() => {});
-      return res.redirect("/");
+      req.session.destroy(() => {
+        return res.redirect("/");
+      });
+      return;
     }
-    next(); // token còn hạn
+    // Nếu hợp lệ => cho phép đi tiếp
+    next();
   } catch (err) {
-    console.error("Middleware error", err);
-    return res.redirect("/");
+    console.error("Middleware auth error:", err);
+    res.redirect("/");
   }
 };
