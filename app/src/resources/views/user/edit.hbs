@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa hồ sơ</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 40px;
+      background-color: #c8a88a;
+      color: #333;
+      display: flex;
+      justify-content: center;
+    }
+
+    .form-container {
+      background-color: #fff;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #5f1a04;
+      font-size: 28px;
+      margin-bottom: 24px;
+      text-align: center;
+    }
+
+    label {
+      font-weight: bold;
+      display: block;
+      margin-top: 16px;
+      margin-bottom: 6px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      transition: border-color 0.2s ease;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: #7a2105;
+      outline: none;
+    }
+
+    .button-group {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+    }
+
+    button {
+      background-color: #7a2105;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #5f1a04;
+    }
+
+    a button {
+      background-color: #ccc;
+      color: #333;
+    }
+
+    a button:hover {
+      background-color: #aaa;
+    }
+
+    @media (max-width: 600px) {
+      .form-container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>Chỉnh sửa hồ sơ</h1>
+    <form action="/profile/{{user._id}}/edit" method="POST" onsubmit="return confirmEdit()">
+      <label>Họ tên hiển thị:</label>
+      <input name="displayName" value="{{user.profile.displayName}}" required>
+
+      <label>Avatar URL:</label>
+      <input name="avatar" value="{{user.profile.avatar}}" required>
+
+      {{#if user.profile.school}}
+      <label>Trường:</label>
+      <input name="school" value="{{user.profile.school}}">
+      {{/if}}
+
+      {{#if user.profile.grade}}
+      <label>Lớp:</label>
+      <input name="grade" value="{{user.profile.grade}}">
+      {{/if}}
+
+      <div class="button-group">
+        <button type="submit"> Lưu thay đổi</button>
+        <a href="/profile/{{user._id}}"><button type="button"> Huỷ</button></a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function confirmEdit() {
+      return confirm("Bạn có chắc chắn muốn thay đổi thông tin?");
+    }
+  </script>
+
+</body>
+
+</html>
