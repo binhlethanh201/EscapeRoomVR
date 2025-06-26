@@ -1,64 +1,205 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Play now!</title>
-    <style>
-        body {
-            margin: 0;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background-image: url('/image/start_background.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+  <meta charset="UTF-8">
+  <title>Play now!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+    }
 
-        h1 {
-            color: #ffffff;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-image: url('/image/start_background.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
 
-        .button-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            /* Khoảng cách giữa các nút */
-            margin-top: 330px;
-        }
+    h1 {
+      color: #ffffff;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-        button {
-            background-color: #7a2105;
-            border: 2px solid black;
-            border-radius: 7px;
-            font-size: 15px;
-            font-weight: 800;
-            color: #ffffff;
-            padding: 10px 20px;
-            cursor: pointer;
-            transition: background-color 0.3s;
-        }
+    .button-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      margin-top: 300px;
+    }
 
-        button:hover {
-            background-color: #5f1a04;
-        }
-    </style>
+    button {
+      background-color: #7a2105;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #ffffff;
+      padding: 12px 24px;
+      cursor: pointer;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #5f1a04;
+      transform: scale(1.02);
+    }
+
+    .avatar-dropdown {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .avatar-wrapper {
+      position: relative;
+    }
+
+    .avatar-img {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 2px solid #fff;
+      cursor: pointer;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .avatar-img:hover {
+      transform: scale(1.08);
+      box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+    }
+
+    .dropdown-menu {
+      display: none;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      background-color: #764a4a;
+      border-radius: 12px;
+      min-width: 220px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      animation: fadeIn 0.25s ease-in-out;
+    }
+
+    .dropdown-header {
+      padding: 14px 16px;
+      background-color: #764a4a;
+      border-bottom: 1px solid #ffffff30;
+      font-size: 16px;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .dropdown-header::before {
+      content: "👤";
+      font-size: 18px;
+    }
+
+    .dropdown-menu form {
+      margin: 0;
+    }
+
+    .dropdown-menu button {
+      width: 100%;
+      padding: 12px 18px;
+      border: none;
+      background-color: #7a2105;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 15px;
+      cursor: pointer;
+      text-align: left;
+      transition: background-color 0.2s ease, opacity 0.2s ease;
+    }
+
+    .dropdown-menu button:hover {
+      background-color: #5f1a04;
+      opacity: 0.95;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <div><img src="/app/public/image/start_background.jpg" alt="background" style="display: none;"></div>
-    <div class="button-container">
-        <button onclick="redirectToLink()">Play now!</button>
-        <button>Continuous</button>
-        <button>Setting</button>
+  <div class="button-container">
+    <button onclick="redirectToLink()">Chơi Ngay!</button>
+    <button>Tiếp Tục</button>
+    <button>Cài Đặt</button>
+  </div>
+
+  <!-- Avatar Dropdown -->
+  <div class="avatar-dropdown">
+    <div class="avatar-wrapper">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" id="avatarIcon" class="avatar-img" />
+
+      <div id="dropdownMenu" class="dropdown-menu">
+        <div class="dropdown-header">
+          Xin chào, <strong>{{username}}</strong>
+        </div>
+
+        <form action="/profile/{{id}}" method="GET">
+          <button type="submit">Trang cá nhân</button>
+        </form>
+
+        <form action="/logout" method="POST">
+          <button type="submit">Đăng xuất</button>
+        </form>
+      </div>
     </div>
-    <script>
-        function redirectToLink() {
-            window.location.href = "http://localhost:8080";
-        }
-    </script>
+  </div>
+
+
+  <!-- Scripts -->
+  <script>
+    //redirect to link
+    function redirectToLink() {
+      window.location.href = "http://localhost:8080";
+    }
+
+    //drop down icon
+    const avatarIcon = document.getElementById("avatarIcon");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    avatarIcon.addEventListener("click", () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+    window.addEventListener("click", function (e) {
+      if (!avatarIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Auto logout
+    const expires = {{#if expiresInMs}}{{expiresInMs}}{{else}}10800000{{/if}};
+    setTimeout(() => {
+      window.location.href = "/";
+    }, expires);
+  </script>
 </body>
+<<<<<<< HEAD
+=======
+
+>>>>>>> c9a4d73e9f73ce842eaa025052e2f2f67a877a3d
 </html>
