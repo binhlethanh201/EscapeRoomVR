@@ -12,13 +12,10 @@ class Room3Controller {
   // [GET] /hotspot/window
   async showWindow(req, res) {
     try {
-      //tìm room3 từ database
       const room = await Room3.findById("room3");
-      //nếu không tìm thấy dữ liệu ở DB
       if (!room || !room.hotspot || !room.hotspot.window) {
         return res.status(404).send("Không tìm thấy dữ liệu hotspot window");
       }
-      //gọi window từ hotspot ở DB
       const windowHotspot = room.hotspot.window;
       res.render("room3/hotspot/window", { hotspot: windowHotspot });
     } catch (err) {
@@ -31,25 +28,21 @@ class Room3Controller {
   //[GET] /minigame/fillinblank
   async fillInBlankGame(req, res) {
     try {
-      //tìm room3 từ database
       const room = await Room3.findById("room3");
       const dataArray = room?.hotspot?.window?.interactionData;
-      //nếu không tìm thấy dữ liệu ở DB
       if (!Array.isArray(dataArray)) {
         return res
           .status(500)
           .send("Dữ liệu fillInBlank không tồn tại hoặc không đúng định dạng");
       }
-      //tìm fillInBlank từ hotspot/minigame
       const fillInBlank = dataArray.find((item) => item.id === "fillInBlank");
       if (!fillInBlank) {
         return res.status(404).send("Không tìm thấy câu hỏi fillInBlank");
       }
-      // Convert "___" in câu hỏi thành "_____" để khớp input
       const sentence = fillInBlank.question.replace("___", "_____");
       const sentenceData = {
         sentence,
-        answer: fillInBlank.answer[0], // lấy 1 đáp án đúng đầu tiên
+        answer: fillInBlank.answer[0],
       };
       res.render("room3/minigame/fillInBlank", { sentenceData });
     } catch (error) {
@@ -60,21 +53,17 @@ class Room3Controller {
   //[GET] /minigame/multiplequestion
   async multipleQuestionGame(req, res) {
     try {
-      //tìm room3 từ database
       const room = await Room3.findById("room3");
       const dataArray = room?.hotspot?.window?.interactionData;
-      //nếu không tìm thấy dữ liệu ở DB
       if (!Array.isArray(dataArray)) {
         return res.status(500).send("Không có interactionData dạng array");
       }
-      //lọc ra các câu hỏi có id là 'multipleChoice'
       const multipleQuestions = dataArray.filter(
         (item) => item.id === "multipleChoice"
       );
       if (multipleQuestions.length === 0) {
         return res.status(404).send("Không tìm thấy multiple choice question");
       }
-      //format lại để client để xử lý
       const questions = multipleQuestions.map((q) => ({
         question: q.question,
         options: q.options,

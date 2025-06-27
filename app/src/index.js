@@ -46,6 +46,7 @@ app.engine(
         formatDate: (date) => {
       return moment(date).format("HH:mm:ss - DD/MM/YYYY");
     },
+    eq: (a, b) => a === b,
     },
   })
 );
@@ -53,6 +54,7 @@ app.set("view engine", "hbs");
 //view engine các path resources và views (các folder lưu giao diện)
 app.set("views", path.join(__dirname, "resources", "views"));
 //view engine path public (minigame, ảnh)
+app.use('/css', express.static(path.join(__dirname, 'resources', 'css')));
 app.use(express.static(path.join(__dirname, "../public")));
 
 //bắt đầu app bằng login

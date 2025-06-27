@@ -56,7 +56,7 @@ router.post("/forgotpassword", AuthController.forgotPassword);
 router.get("/resetpassword/:token", AuthController.resetPasswordForm);
 router.post("/resetpassword/:token", AuthController.resetPassword);
 
-//[GET] /home : Middleware authUtil sẽ kiểm tra xác thực trước khi render trang home
+//[GET] /home 
 router.get("/home", authUtil, async (req, res) => {
   const user = await User.findById(req.session.userId);
   res.render("home", { username: user.username, id: user._id });
