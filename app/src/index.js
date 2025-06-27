@@ -52,16 +52,10 @@ app.engine(
 app.set("view engine", "hbs");
 //view engine các path resources và views (các folder lưu giao diện)
 app.set("views", path.join(__dirname, "resources", "views"));
-<<<<<<< HEAD
-
-app.use(express.static(path.join(__dirname, "../public")));
-
-=======
 //view engine path public (minigame, ảnh)
 app.use(express.static(path.join(__dirname, "../public")));
 
 //bắt đầu app bằng login
->>>>>>> c9a4d73e9f73ce842eaa025052e2f2f67a877a3d
 app.get("/", (req, res) => {
   if (req.session.userId) {
     return res.redirect("/home");
@@ -72,12 +66,7 @@ app.get("/", (req, res) => {
 //truyền app vào route để khai báo các routes ở path routes
 route(app);
 
-<<<<<<< HEAD
-
-
-=======
 //khởi động server express qua port 3000 và chạy trong localhost
->>>>>>> c9a4d73e9f73ce842eaa025052e2f2f67a877a3d
 app.listen(port, () => {
   console.log(`App listening on port: http://localhost:${port}`);
 });
