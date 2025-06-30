@@ -37,7 +37,7 @@ document.getElementById("submit-button").addEventListener("click", () => {
   resultElement.className = "";
 
   if (!selectedOption) {
-    resultElement.textContent = "Please select an option before submitting.";
+    resultElement.textContent = "Vui lòng chọn một lựa chọn trước khi gửi.";
     resultElement.classList.add("wrong");
     return;
   }
@@ -45,14 +45,14 @@ document.getElementById("submit-button").addEventListener("click", () => {
   const correctAnswer = questions[currentQuestionIndex].answer;
 
   if (selectedOption === correctAnswer) {
-    resultElement.textContent = "Correct!";
+    resultElement.textContent = "Chính Xác!";
     resultElement.classList.add("correct");
 
     setTimeout(() => {
       window.history.back();
     }, 1000);
   } else {
-    resultElement.textContent = "Wrong! Try again.";
+    resultElement.textContent = "Sai Rồi! Hãy Thử Lại.";
     resultElement.classList.add("wrong");
   }
 });

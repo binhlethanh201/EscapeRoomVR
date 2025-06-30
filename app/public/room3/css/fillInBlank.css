@@ -57,23 +57,34 @@ input[type="text"]:focus {
   outline: none;
   box-shadow: 0 0 6px rgba(41, 128, 185, 0.3);
 }
-/* Submit Button */
-#submit-button {
-  margin-top: 20px;
-  padding: 12px 30px;
-  background: #2980b9;
-  color: #fff;
+/* Common button style */
+.button {
+  padding: 12px 28px;
   border: none;
   border-radius: 10px;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s, transform 0.2s;
+  margin: 10px 10px 0 10px;
 }
-/* Submit Button hover*/
+/* Submit Button */
+#submit-button {
+  background-color: #0077cc;
+  color: #fff;
+}
 #submit-button:hover {
-  background: #1c5980;
-  transform: scale(1.03);
+  background-color: #005fa3;
+  transform: translateY(-2px);
+}
+/* Back Button */
+.back-button {
+  background-color: #cccccc;
+  color: #333;
+}
+.back-button:hover {
+  background-color: #b0b0b0;
+  transform: translateY(-2px);
 }
 /* Result Display */
 #result {

@@ -4,6 +4,7 @@
   margin: 0;
   padding: 0;
 }
+
 /* Body */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -15,74 +16,107 @@ body {
   align-items: center;
   padding: 20px;
 }
+
 /* Quiz Container */
 #quiz-container {
   background: #ffffff;
   border-radius: 16px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 460px;
+  max-width: 500px;
   padding: 35px 30px;
   text-align: left;
   transition: transform 0.3s;
 }
-/* Quiz Container hover */
+
 #quiz-container:hover {
   transform: scale(1.01);
 }
+
+/* Title */
+#quiz-container h1 {
+  text-align: center;
+  color: #2c3e50;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
 /* Question */
 #question {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: bold;
   margin-bottom: 20px;
   color: #2c3e50;
 }
-/* Option */
+
+/* Options */
 #options {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 14px;
 }
-/* Question Label */
+
 #options label {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
+  padding: 12px 16px;
   border: 2px solid #ddd;
   border-radius: 10px;
   background-color: #f9f9f9;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
 }
-/* Question Input */
+
 #options input[type="radio"] {
   margin-right: 10px;
   transform: scale(1.2);
 }
-/* Question Label hover */
+
 #options label:hover {
   background-color: #eef6ff;
   border-color: #76b7f0;
 }
-/* Submit Button */
-#submit-button {
-  display: block;
-  width: 100%;
-  margin-top: 25px;
-  padding: 14px;
-  font-size: 1.05rem;
+
+/* Button group layout */
+.button-group {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Common button style */
+.button {
+  flex: 1;
+  padding: 12px;
+  font-size: 1rem;
   font-weight: 600;
   border: none;
   border-radius: 8px;
-  color: #fff;
-  background: #3498db;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background 0.3s ease, transform 0.2s ease;
 }
-/* Submit Button hover */
-#submit-button:hover {
+
+/* Submit Button */
+.submit-button {
+  background: #3498db;
+  color: #fff;
+}
+.submit-button:hover {
   background-color: #2980b9;
+  transform: translateY(-2px);
 }
+
+/* Back Button */
+.back-button {
+  background: #cccccc;
+  color: #333;
+}
+.back-button:hover {
+  background-color: #b0b0b0;
+  transform: translateY(-2px);
+}
+
 /* Result */
 #result {
   text-align: center;
@@ -91,12 +125,12 @@ body {
   font-weight: 500;
   color: #2c3e50;
 }
-/* Result correct*/
+
 #result.correct {
   color: #2ecc71;
   font-weight: bold;
 }
-/* Result wrong*/
+
 #result.wrong {
   color: #e74c3c;
   font-weight: bold;
