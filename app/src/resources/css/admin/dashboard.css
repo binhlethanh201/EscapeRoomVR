@@ -1,0 +1,60 @@
+body {
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+    background-color: #c8a88a;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.dashboard-container {
+    background-color: #fff;
+    padding: 50px 70px;
+    border-radius: 16px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 460px;
+}
+
+h1 {
+    color: #7a2105;
+    margin-bottom: 36px;
+    font-size: 30px;
+}
+
+.admin-links {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.admin-links a,
+.admin-links form button {
+    background-color: #7a2105;
+    color: white;
+    text-decoration: none;
+    padding: 14px 28px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    display: inline-block;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+
+.admin-links a:hover,
+.admin-links form button:hover {
+    background-color: #5f1a04;
+    transform: translateY(-2px);
+}
+
+.admin-links form {
+    margin: 0;
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Profile của {{user.username}}</title>
+  <link rel="stylesheet" href="/css/user/profile.css">
+</head>
+
+<body>
+  <h1>Thông tin người dùng</h1>
+
+  <div class="profile-card">
+    <p><strong>Tên đăng nhập:</strong> {{user.username}}</p>
+    <p><strong>Email:</strong> {{user.email}}</p>
+    <p><strong>Vai trò:</strong> {{user.role}}</p>
+    <p><strong>Họ tên hiển thị:</strong> {{user.profile.displayName}}</p>
+
+    {{#if user.profile.school}}
+    <p><strong>Trường:</strong> {{user.profile.school}}</p>
+    <p><strong>Lớp:</strong> {{user.profile.grade}}</p>
+    {{/if}}
+
+    {{#if user.profile.department}}
+    <p><strong>Phòng ban:</strong> {{user.profile.department}}</p>
+    {{/if}}
+
+    <p><strong>Ngày tạo tài khoản:</strong> {{formatDate user.profile.createdAt}}</p>
+
+  </div>
+
+  <div class="buttons">
+    <a href="/home"><button>Quay lại trang chính</button></a>
+    <a href="/profile/{{user._id}}/changepassword"><button>Đổi mật khẩu</button></a>
+    <a href="/profile/{{user._id}}/edit"><button>Chỉnh sửa hồ sơ</button></a>
+  </div>
+</body>
+
+</html>

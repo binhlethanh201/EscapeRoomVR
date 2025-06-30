@@ -1,6 +1,6 @@
 [
     {
-        "id": "room2",
+        "_id": "room2",
         "name": "Hiện Tại",
         "theme": "Văn Miếu - Quốc Tử Giám",
         "description": "Không gian bảo tàng thu nhỏ về Văn Miếu – Quốc Tử Giám, biểu tượng văn hóa và giáo dục",
@@ -11,7 +11,7 @@
         "panoramaFile": "room2_main_panorama.jpg",
         "backgroundMusic": "music.mp3",
         "hotspots": {
-            "painting": {
+            "paint": {
                 "id": "room2Painting",
                 "name": "Bức tranh về Văn Miếu",
                 "type": "minigame",

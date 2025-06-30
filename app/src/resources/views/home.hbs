@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi">
+<<<<<<< HEAD
 <body>
     <div><img url="file:///C:/Users/admin/Downloads/EscapeRoomVR/app/src/resources/views/partials/start_background.jpg"></div>
     <button onclick="redirectToLink()">Play now!</button>
@@ -9,5 +10,67 @@
             window.location.href = "http://localhost:8080";
         }
     </script>
+=======
+
+<head>
+  <meta charset="UTF-8">
+  <title>Play now!</title>
+  <link rel="stylesheet" href="/css/home.css">
+</head>
+
+<body>
+  <div class="button-container">
+    <button onclick="redirectToLink()">Chơi Ngay!</button>
+    <button>Tiếp Tục</button>
+    <button>Cài Đặt</button>
+</div>
+
+
+  <!-- Avatar Dropdown -->
+  <div class="avatar-dropdown">
+    <div class="avatar-wrapper">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" id="avatarIcon" class="avatar-img" />
+
+      <div id="dropdownMenu" class="dropdown-menu">
+        <div class="dropdown-header">
+          Xin chào, <strong>{{username}}</strong>
+        </div>
+        <form action="/profile/{{id}}" method="GET">
+          <button type="submit">Trang cá nhân</button>
+        </form>
+        <form action="/logout" method="POST">
+          <button type="submit">Đăng xuất</button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Scripts -->
+  <script>
+    //redirect to link
+    function redirectToLink() {
+      window.location.href = "http://localhost:8080";
+    }
+
+    //drop down icon
+    const avatarIcon = document.getElementById("avatarIcon");
+    const dropdownMenu = document.getElementById("dropdownMenu");
+    avatarIcon.addEventListener("click", () => {
+      dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
+    });
+    window.addEventListener("click", function (e) {
+      if (!avatarIcon.contains(e.target) && !dropdownMenu.contains(e.target)) {
+        dropdownMenu.style.display = "none";
+      }
+    });
+
+    // Auto logout
+    const expires = {{#if expiresInMs}}{{expiresInMs}}{{else}}10800000{{/if}};
+    setTimeout(() => {
+      window.location.href = "/";
+    }, expires);
+  </script>
+>>>>>>> 06f5e6859fa44f1abbec9749df972a34bbd0e548
 </body>
 </html>

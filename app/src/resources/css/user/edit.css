@@ -1,0 +1,84 @@
+* {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 40px;
+    background-color: #c8a88a;
+    color: #333;
+    display: flex;
+    justify-content: center;
+}
+
+.form-container {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+}
+
+h1 {
+    color: #5f1a04;
+    font-size: 28px;
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #7a2105;
+    outline: none;
+}
+
+.button-group {
+    margin-top: 24px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+}
+
+button {
+    background-color: #7a2105;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #5f1a04;
+}
+
+a button {
+    background-color: #ccc;
+    color: #333;
+}
+
+a button:hover {
+    background-color: #aaa;
+}

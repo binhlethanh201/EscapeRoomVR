@@ -1,0 +1,13 @@
+body {
+    margin: 0;
+    height: 100vh;
+    background-image: url('/room3/img/Desk.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}

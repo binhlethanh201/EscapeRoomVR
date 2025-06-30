@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng ký tài khoản</title>
+    <link rel="stylesheet" href="/css/user/register.css">
+</head>
+
+<body>
+    <div class="register-container">
+        <h1>Đăng ký</h1>
+        {{#if error}}<p class="error">{{error}}</p>{{/if}}
+        <form method="POST" action="/register">
+            <label for="username">Tên đăng nhập:</label>
+            <input type="text" name="username" required value="{{username}}">
+
+            <label for="email">Email:</label>
+            <input type="email" name="email" required value="{{email}}">
+
+            <label for="password">Mật khẩu:</label>
+            <input type="password" name="password" required value="{{password}}">
+
+            <label for="displayName">Họ tên hiển thị:</label>
+            <input type="text" name="displayName" required value="{{displayName}}">
+
+            <label for="school">Trường:</label>
+            <input type="text" name="school" value="{{school}}">
+
+            <label for="grade">Lớp:</label>
+            <input type="text" name="grade" value="{{grade}}">
+
+            <button type="submit">Tạo tài khoản</button>
+        </form>
+        <hr>
+        <a href="/" style="display: block; text-align: center; margin-top: 12px;">
+            <button style="width: 100%; background-color: #ccc; color: #333;">Quay Lại</button>
+        </a>
+    </div>
+</body>
+
+</html>

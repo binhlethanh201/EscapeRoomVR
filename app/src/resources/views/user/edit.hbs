@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Chỉnh sửa hồ sơ</title>
+  <link rel="stylesheet" href="/css/user/edit.css">
+</head>
+
+<body>
+  <div class="form-container">
+    <h1>Chỉnh sửa hồ sơ</h1>
+    <form action="/profile/{{user._id}}/edit" method="POST" onsubmit="return confirmEdit()">
+      <label>Họ tên hiển thị:</label>
+      <input name="displayName" value="{{user.profile.displayName}}" required>
+
+      <label>Avatar URL:</label>
+      <input name="avatar" value="{{user.profile.avatar}}" required>
+
+      {{#if user.profile.school}}
+      <label>Trường:</label>
+      <input name="school" value="{{user.profile.school}}">
+      {{/if}}
+
+      {{#if user.profile.grade}}
+      <label>Lớp:</label>
+      <input name="grade" value="{{user.profile.grade}}">
+      {{/if}}
+
+      <div class="button-group">
+        <button type="submit"> Lưu thay đổi</button>
+        <a href="/profile/{{user._id}}"><button type="button"> Huỷ</button></a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    function confirmEdit() {
+      return confirm("Bạn có chắc chắn muốn thay đổi thông tin?");
+    }
+  </script>
+
+</body>
+
+</html>

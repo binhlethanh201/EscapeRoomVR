@@ -1,0 +1,85 @@
+[
+     {
+            "_id": "user1",
+            "email": "player1@example.com",
+            "username": "user1",
+            "password": "123",
+            "role": "player",
+            "permissions": [
+                "read_game",
+                "play_game",
+                "view_leaderboard"
+            ],
+            "profile": {
+                "displayName": "Học sinh A",
+                "avatar": "avatar_url",
+                "school": "Trường THCS ABC",
+                "grade": "8",
+                "createdAt": "2024-01-15T10:30:00Z"
+            },
+            "status": "active",
+            "lastLogin": "2024-06-05T14:30:00Z",
+            "currentSessionId": "session_1"
+        },
+        {
+            "_id": "user2",
+            "email": "player2@example.com",
+            "username": "user2",
+            "password": "123",
+            "role": "player",
+            "permissions": [
+                "read_game",
+                "play_game",
+                "view_leaderboard"
+            ],
+            "profile": {
+                "displayName": "Học sinh B",
+                "avatar": "avatar_url",
+                "school": "Trường THPT ABC",
+                "grade": "12",
+                "createdAt": "2024-01-15T10:30:00Z"
+            },
+            "status": "active",
+            "lastLogin": "2024-06-05T14:30:00Z",
+            "currentSessionId": "session_2"
+        },
+        {
+            "_id": "admin1",
+            "email": "admin1@example.com",
+            "username": "admin1",
+            "password": "123",
+            "role": "admin",
+            "permissions": [
+                "*"
+            ],
+            "profile": {
+                "displayName": "Admin User 1",
+                "avatar": "admin_avatar_url",
+                "department": "IT",
+                "createdAt": "2024-01-01T00:00:00Z"
+            },
+            "status": "active",
+            "lastLogin": "2024-06-06T08:00:00Z",
+            "currentSessionId": "session_3"
+        },
+        {
+            "_id": "admin2",
+            "email": "admin2@example.com",
+            "username": "admin2",
+            "password": "123",
+            "role": "admin",
+            "permissions": [
+                "*"
+            ],
+            "profile": {
+                "displayName": "Admin User 2",
+                "avatar": "admin_avatar_url",
+                "department": "IT",
+                "createdAt": "2024-01-01T00:00:00Z"
+            },
+            "status": "active",
+            "lastLogin": "2024-06-06T08:00:00Z",
+            "currentSessionId": "session_4"
+        }
+    
+]
