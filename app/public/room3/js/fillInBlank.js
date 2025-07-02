@@ -18,13 +18,13 @@ function checkAnswer() {
   resultElement.classList.remove("correct", "incorrect");
 
   if (userAnswer === correctAnswer) {
-    resultElement.textContent = "Correct!";
+    resultElement.textContent = "Chính Xác!";
     resultElement.classList.add("correct");
     setTimeout(() => {
       window.history.back();
     }, 1000);
   } else {
-    resultElement.textContent = "Wrong! Try Again.";
+    resultElement.textContent = "Sai Rồi! Hãy Thử Lại.";
     resultElement.classList.add("incorrect");
   }
 }
