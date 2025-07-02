@@ -1,1 +1,71 @@
-<h1>Door</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Door Lock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="flex items-center justify-center h-screen" style="background-color: #1d1007;">
+  <div class="bg-gray-1000 p-6 rounded-lg shadow-lg text-center">
+    <h1 class="text-2xl text-white mb-4">Enter Code</h1>
+    <div id="display" class="text-white text-xl mb-4 bg-gray-900 p-2 rounded">___</div>
+    <div class="grid grid-cols-3 gap-2 mb-4">
+      <button onclick="addNumber(1)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">1</button>
+      <button onclick="addNumber(2)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">2</button>
+      <button onclick="addNumber(3)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">3</button>
+      <button onclick="addNumber(4)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">4</button>
+      <button onclick="addNumber(5)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">5</button>
+      <button onclick="addNumber(6)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">6</button>
+      <button onclick="addNumber(7)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">7</button>
+      <button onclick="addNumber(8)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">8</button>
+      <button onclick="addNumber(9)" class="bg-gray-700 text-white p-4 rounded hover:bg-gray-600">9</button>
+    </div>
+    <div class="flex justify-between">
+      <button onclick="window.location.href='http://localhost:8080/room2'" class="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-500">Back</button>
+      <button onclick="checkCode()" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-500">Enter</button>
+    </div>
+    <p id="message" class="text-white mt-4"></p>
+  </div>
+
+  <script>
+    let code = [];
+    const correctCode = [1, 7, 6];
+
+    function addNumber(num) {
+      if (code.length < 3) {
+        code.push(num);
+        updateDisplay();
+      }
+    }
+
+    function updateDisplay() {
+      const display = document.getElementById('display');
+      let displayText = '';
+      for (let i = 0; i < 3; i++) {
+        displayText += code[i] ? code[i] : '_';
+      }
+      display.textContent = displayText;
+    }
+
+    function checkCode() {
+      const message = document.getElementById('message');
+      if (code.length === 3) {
+        const isCorrect = code.every((num, index) => num === correctCode[index]);
+        if (isCorrect) {
+          message.textContent = 'Code Correct! Unlocking...';
+          setTimeout(() => {
+            window.location.href = 'http://localhost:8080';
+          }, 1000);
+        } else {
+          message.textContent = 'Code Incorrect. Try again.';
+          code = [];
+          updateDisplay();
+        }
+      } else {
+        message.textContent = 'Please enter a 3-digit code.';
+      }
+    }
+  </script>
+</body>
+</html>

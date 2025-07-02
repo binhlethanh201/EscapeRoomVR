@@ -12,11 +12,6 @@ const port = 3000;
 //test morgan
 // const morgan = require("morgan");
 // app.use(morgan('combined'));
-<<<<<<< HEAD
-app.engine('hbs', handlebars.engine({
-  extname: ".hbs",
-  helpers:{
-=======
 
 //connect database
 const db = require("./config/db");
@@ -36,7 +31,6 @@ app.use(session({
   saveUninitialized: true,
   cookie: {
     maxAge: 3 * 60 * 60 * 1000, // 3 giờ
->>>>>>> 06f5e6859fa44f1abbec9749df972a34bbd0e548
   }
 }));
 
