@@ -5,10 +5,12 @@ const userRouter = require("./user");
 const adminRouter = require("./admin");
 
 function route(app) {
-  //request /room1 : chuyển về room1Router
+
   app.use("/room1", room1Router);
   app.use("/room2", room2Router);
   app.use("/room3", room3Router);
+
+
 
   //request /admin : chuyển về adminRouter
   app.use("/admin", adminRouter);

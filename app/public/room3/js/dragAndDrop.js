@@ -48,13 +48,13 @@ submitBtn.addEventListener("click", () => {
   });
 
   if (correct === dropZones.length) {
-    result.textContent = "Passed!...";
+    result.textContent = "Chính Xác!";
     result.style.color = "green";
     setTimeout(() => {
       window.location.href = "http://localhost:8080/room3";
     }, 1000);
   } else {
-    result.textContent = "Incorrect! Resetting...";
+    result.textContent = "Sai Rồi! Hãy Thử Lại.";
     result.style.color = "red";
 
     setTimeout(() => {
