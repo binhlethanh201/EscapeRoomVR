@@ -44,7 +44,7 @@ function pano2vrSkin(player,base) {
 	player.addVariable('opt_share_twitter', 2, true, { ignoreInState: 1  });
 	player.addVariable('opt_share_copy', 2, true, { ignoreInState: 1  });
 	player.addVariable('opt_share', 2, false, { ignoreInState: 1  });
-	player.addVariable('opt_url_popup', 2, true, { ignoreInState: 1  });
+			player.addVariable('opt_url_popup', 2, false, { ignoreInState: 1  });
 	player.addVariable('pos_menu_button', 1, 0, { ignoreInState: 0  });
 	player.addVariable('pos_share_button', 1, 0, { ignoreInState: 0  });
 	player.addVariable('pos_languages', 1, 0, { ignoreInState: 0  });

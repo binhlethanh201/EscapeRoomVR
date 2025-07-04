@@ -11,6 +11,9 @@ router.get("/hotspot/desk", Room3Controller.desk);
 //[GET] /hotspot/window
 router.get("/hotspot/window", Room3Controller.showWindow);
 
+//[GET] /hotspot/door
+router.get("/hotspot/door", Room3Controller.door);  
+
 //[GET] /minigame
 //[GET] /minigame/fillinblank
 router.get("/minigame/fillinblank", Room3Controller.fillInBlankGame);

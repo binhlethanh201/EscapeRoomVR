@@ -1,3 +1,59 @@
-<h1>
-    Room3: door
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Door Lock</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-[#fefae0]">
+  <div class="bg-white p-6 rounded-2xl shadow-xl w-96 border-2 border-[#a3b18a]">
+    <h1 class="text-2xl text-[#344e41] font-semibold mb-6 text-center font-sans">Nhập Mật Khẩu</h1>
+
+    <!-- Input Fields -->
+    <div class="space-y-3 mb-6">
+      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 1">
+      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 2">
+      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 3">
+    </div>
+
+    <!-- Message -->
+    <p id="message" class="text-center text-[#588157] mb-4 font-medium h-6"></p>
+
+    <!-- Buttons -->
+    <div class="flex justify-between">
+      <button onclick="window.location.href='http://localhost:8080/room3'" class="bg-[#e63946] hover:bg-[#d62828] text-white px-4 py-2 rounded-md font-medium shadow">
+        ← Trở về
+      </button>
+      <button onclick="checkTextInput()" class="bg-[#2a9d8f] hover:bg-[#21867a] text-white px-4 py-2 rounded-md font-medium shadow">
+        Mở khóa
+      </button>
+    </div>
+  </div>
+
+  <!-- Script -->
+  <script>
+    const correctAnswers = {{{ json unlockCodeArray }}}; 
+    function checkTextInput() {
+      const inputs = document.querySelectorAll(".answer-input");
+      const userAnswers = Array.from(inputs).map(input => input.value.trim());
+      const message = document.getElementById("message");
+      const allCorrect = correctAnswers.every(ans =>
+        userAnswers.some(user => user.toLowerCase() === ans.toLowerCase())
+      );
+
+      if (allCorrect && userAnswers.length === 3) {
+        message.textContent = "Mật khẩu đúng! Đang mở khóa...";
+        setTimeout(() => {
+          window.location.href = "http://localhost:8080";
+        }, 1000);
+      } else {
+        message.textContent = "Sai mật khẩu. Hãy thử lại.";
+      }
+    }
+  </script>
+</body>
+
+</html>

@@ -1,3 +1,117 @@
-<h1>
-    room1: door
-</h1>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Door Lock</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="flex items-center justify-center h-screen bg-[#1d1007]">
+    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-2xl text-center w-80 border-4 border-[#a67c52]">
+        <h1 class="text-2xl text-[#f5deb3] font-serif mb-4"> Nhập Mật Khẩu</h1>
+        <div id="display"
+            class="text-[#f5deb3] text-2xl font-mono tracking-widest mb-6 bg-[#5c4438] p-3 rounded shadow-inner">____
+        </div>
+        <div class="grid grid-cols-3 gap-3 mb-4">
+            <button onclick="addNumber(1)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">1</button>
+            <button onclick="addNumber(2)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">2</button>
+            <button onclick="addNumber(3)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">3</button>
+            <button onclick="addNumber(4)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">4</button>
+            <button onclick="addNumber(5)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">5</button>
+            <button onclick="addNumber(6)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">6</button>
+            <button onclick="addNumber(7)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">7</button>
+            <button onclick="addNumber(8)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">8</button>
+            <button onclick="addNumber(9)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">9</button>
+            <button onclick="backspace()" class="action-btn bg-yellow-700 hover:bg-yellow-600">⌫</button>
+            <button onclick="addNumber(0)"
+                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">0</button>
+            <button onclick="clearCode()" class="action-btn bg-blue-700 hover:bg-blue-600">Clear</button>
+        </div>
+
+        <div class="flex justify-between">
+            <button onclick="window.location.href='http://localhost:8080/room1'"
+                class="bg-red-700 hover:bg-red-600 text-white px-4 py-2 rounded-md font-semibold">
+                ← Trở về
+            </button>
+            <button onclick="checkCode()"
+                class="bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-md font-semibold">
+                Mở khóa
+            </button>
+        </div>
+
+        <p id="message" class="text-yellow-200 mt-4 font-medium h-6"></p>
+    </div>
+    <style>
+        .key-btn {
+            @apply bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow;
+        }
+
+        .action-btn {
+            @apply text-white text-base py-3 rounded-md font-semibold shadow;
+        }
+    </style>
+
+    <script>
+        let code = [];
+        const correctCode = {{json unlockCodeArray}};
+
+        function addNumber(num) {
+            if (code.length < 4) {
+                code.push(num);
+                updateDisplay();
+            }
+        }
+
+        function backspace() {
+            code.pop();
+            updateDisplay();
+        }
+
+        function clearCode() {
+            code = [];
+            updateDisplay();
+            document.getElementById('message').textContent = '';
+        }
+
+        function updateDisplay() {
+            const display = document.getElementById('display');
+            let displayText = '';
+            for (let i = 0; i < 4; i++) {
+                displayText += code[i] !== undefined ? code[i] : '_';
+            }
+            display.textContent = displayText;
+        }
+
+        function checkCode() {
+            const message = document.getElementById('message');
+            if (code.length === 4) {
+                const isCorrect = code.every((num, index) => num === correctCode[index]);
+                if (isCorrect) {
+                    message.textContent = 'Mật khẩu đúng! Đang mở khóa...';
+                    setTimeout(() => {
+                        window.location.href = 'http://localhost:8080';
+                    }, 1000);
+                } else {
+                    message.textContent = "Sai mật khẩu. Hãy thử lại.";
+                    code = [];
+                    updateDisplay();
+                }
+            } else {
+                message.textContent = "Hãy nhập đủ 4 chữ số để mở khóa.";
+            }
+        }
+    </script>
+</body>
+
+</html>
