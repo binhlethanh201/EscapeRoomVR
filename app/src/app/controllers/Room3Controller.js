@@ -9,6 +9,18 @@ class Room3Controller {
   desk(req, res, next) {
     res.render("room3/hotspot/desk");
   }
+  // [GET] /hotspot/door
+  async door(req, res, next) {
+    try {
+      const room = await Room3.findById("room3");
+      const unlockCode = room?.unlockCode;
+      res.render("room3/hotspot/door", { 
+        unlockCodeArray: unlockCode,
+       });
+    } catch(error) {
+      next(error);
+    }
+  }
   // [GET] /hotspot/window
   async showWindow(req, res) {
     try {

@@ -18,8 +18,17 @@ class Room1Controller {
     res.render("room1/hotspot/back");
   }
   //[GET] /hotspots/door
-  door(req, res, next) {
-    res.render("room1/hotspot/door");
+  async door(req, res, next) {
+    try {
+      const room = await Room1.findById("room1");
+      const unlockCode = room?.unlockCode;
+    res.render("room1/hotspot/door", { 
+      unlockCodeArray: unlockCode.split("").map(Number),
+     });
+    } catch(error)
+     {
+      next(error);
+    }
   }
 
   //[GET] index

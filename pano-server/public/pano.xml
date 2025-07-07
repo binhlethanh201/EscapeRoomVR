@@ -191,7 +191,7 @@
     <hotspots smoothmovement="0" width="180" height="20" wordwrap="1">
       <label bordercolor="0x000000" backgroundalpha="1" backgroundcolor="0xffffff" textcolor="0x000000" textalpha="1" border="1" width="180" background="1" borderalpha="1" height="20" wordwrap="1" borderradius="1" enabled="1"/>
       <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
-      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room3" id="Point01" distance3D="365.762" fov="10" target="-22.4/1.9/133.2" title="" skinid="ht_url" customimageheight="64" pan="-31.4" tilt="13.1" description="" customimagewidth="64"/>
+      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room3" id="Point01" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-31.4" tilt="13.1" description="" customimagewidth="64"/>
       <polyhotspot target="_self" title="Câu Đố" id="Poly01" description="" url="http://localhost:3000/room3/minigame/multiplequestion">
         <polystring>-355.37/21.04|-351.3/21.29|-342.57/-8.06|-340.64/-15.27|-342.12/-20.38|-342.42/-22.73|-343.2/-25.37|-1.16/-26.4|-3.81/-19.94|-5.13/-14.8|-4.14/-11.36|-3.32/-9.28</polystring>
       </polyhotspot>
@@ -296,7 +296,6 @@
       <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
       <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="{node7}" id="Point01" distance3D="365.762" fov="10" target="-119.7/17.0/117.0" title="" skinid="ht_node" customimageheight="64" pan="-42.55" tilt="15.76" description="" customimagewidth="64"/>
       <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point02" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-31.58" tilt="11.45" description="" customimagewidth="64"/>
-      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point03" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-338.48" tilt="5.69" description="" customimagewidth="64"/>
       <polyhotspot target="_blank" title="Thế kỉ 15" id="Poly01" description="" url="">
         <polystring>-347.06/-17.75|-347.17/10.88|-348.35/11.77|-19.33/11.42|-19.83/10.25|-19.85/-18.08</polystring>
       </polyhotspot>
