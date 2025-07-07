@@ -9,6 +9,7 @@ const Room1Schema = new Schema({
   unlockCode: String,
   order: Number,
   completedMessage: String,
+   
   completedInfor: String,
   panoramaFile: String,
   backgroundMusic: String,

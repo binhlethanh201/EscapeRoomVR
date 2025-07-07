@@ -84,77 +84,77 @@
         <h2>Enter Door Code</h2>
         <div class="display" id="display"></div>
         <div class="keypad">
-            <button onclick="addDigit(1)">1</button>
-            <button onclick="addDigit(2)">2</button>
-            <button onclick="addDigit(3)">3</button>
-            <button onclick="addDigit(4)">4</button>
-            <button onclick="addDigit(5)">5</button>
-            <button onclick="addDigit(6)">6</button>
-            <button onclick="addDigit(7)">7</button>
-            <button onclick="addDigit(8)">8</button>
-            <button onclick="addDigit(9)">9</button>
-            <button onclick="addDigit(0)">0</button>
-            <button onclick="deleteDigit()">Back</button>
-            <button onclick="clearDigits()">Clear</button>
+            <button onclick="addNumber(1)">1</button>
+            <button onclick="addNumber(2)">2</button>
+            <button onclick="addNumber(3)">3</button>
+            <button onclick="addNumber(4)">4</button>
+            <button onclick="addNumber(5)">5</button>
+            <button onclick="addNumber(6)">6</button>
+            <button onclick="addNumber(7)">7</button>
+            <button onclick="addNumber(8)">8</button>
+            <button onclick="addNumber(9)">9</button>
+            <button onclick="backspace()">Back</button>
+            <button onclick="addNumber(0)">0</button>
+            <button onclick="clearCode()">Clear</button>
         </div>
         <div class="action-buttons">
-            <button onclick="submitCode()">Submit</button>
+            <button onclick="checkCode()">Submit</button>
         </div>
         <div class="feedback" id="feedback"></div>
     </div>
 
     <script>
         let code = [];
+        const correctCode = [1, 7, 6]; // Hard-coded for testing, should be replaced dynamically if needed
 
-        function addDigit(digit) {
+        function addNumber(num) {
             if (code.length < 3) {
-                code.push(digit);
+                code.push(num);
                 updateDisplay();
             }
         }
 
-        function deleteDigit() {
+        function backspace() {
             code.pop();
             updateDisplay();
         }
 
-        function clearDigits() {
+        function clearCode() {
             code = [];
             updateDisplay();
-        }
-
-        function updateDisplay() {
-            document.getElementById('display').textContent = code.join(' ');
             document.getElementById('feedback').textContent = '';
         }
 
-        async function submitCode() {
+        function updateDisplay() {
+            const display = document.getElementById('display');
+            let displayText = '';
+            for (let i = 0; i < 3; i++) {
+                displayText += code[i] !== undefined ? code[i] : '_';
+                if (i < 2) displayText += ' ';
+            }
+            display.textContent = displayText;
+        }
+
+        function checkCode() {
+            const feedback = document.getElementById('feedback');
             if (code.length !== 3) {
-                document.getElementById('feedback').textContent = 'Please enter exactly 3 digits.';
+                feedback.textContent = 'Please enter exactly 3 digits.';
                 return;
             }
 
-            try {
-                const response = await fetch('http://localhost:8080/check-code', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ code })
-                });
-                const result = await response.json();
-
-                if (result.success) {
-                    document.getElementById('feedback').textContent = 'Code correct! Redirecting...';
-                    setTimeout(() => {
-                        window.location.href = 'http://localhost:8080';
-                    }, 1000);
-                } else {
-                    document.getElementById('feedback').textContent = 'Incorrect code. Try again.';
-                    clearDigits();
-                }
-            } catch (error) {
-                document.getElementById('feedback').textContent = 'Error checking code. Please try again.';
+            const isCorrect = code.every((num, index) => num === correctCode[index]);
+            if (isCorrect) {
+                feedback.textContent = 'Code correct! Redirecting...';
+                setTimeout(() => {
+                    window.location.href = 'http://localhost:8080';
+                }, 1000);
+            } else {
+                feedback.textContent = 'Incorrect code. Try again.';
+                code = [];
+                updateDisplay();
             }
         }
+        console.log(correctCode);
     </script>
 </body>
 </html>
