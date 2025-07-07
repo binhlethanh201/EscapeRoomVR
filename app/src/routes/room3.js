@@ -9,16 +9,13 @@ router.get("/hotspot/painting", Room3Controller.painting);
 router.get("/hotspot/desk", Room3Controller.desk);
 
 //[GET] /hotspot/window
-router.get("/hotspot/window", Room3Controller.showWindow);
+router.get("/hotspot/window", Room3Controller.window);
 
 //[GET] /hotspot/door
-router.get("/hotspot/door", Room3Controller.door);  
+router.get("/hotspot/door", Room3Controller.door);
 
-//[GET] /minigame
-//[GET] /minigame/fillinblank
-router.get("/minigame/fillinblank", Room3Controller.fillInBlankGame);
-//[GET] /minigame/multiplequestion
-router.get("/minigame/multiplequestion", Room3Controller.multipleQuestionGame);
+//[POST] /complete
+router.post("/complete", Room3Controller.complete);
 
 //[GET] /
 router.get("/", Room3Controller.index);

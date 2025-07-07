@@ -64,7 +64,7 @@
 
     <script>
         let code = [];
-        const correctCode = {{json unlockCodeArray}};
+        const correctCode = {{ json unlockCodeArray }};
 
         function addNumber(num) {
             if (code.length < 4) {
@@ -99,6 +99,10 @@
                 const isCorrect = code.every((num, index) => num === correctCode[index]);
                 if (isCorrect) {
                     message.textContent = 'Mật khẩu đúng! Đang mở khóa...';
+                    fetch("http://localhost:3000/room1/complete", {
+                        method: "POST",
+                        credentials: "include",
+                    });
                     setTimeout(() => {
                         window.location.href = 'http://localhost:8080';
                     }, 1000);

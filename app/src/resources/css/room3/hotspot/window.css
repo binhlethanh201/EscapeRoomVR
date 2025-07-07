@@ -8,8 +8,8 @@
 /* Body */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(135deg, #a1c4fd, #c2e9fb);
-  color: #333;
+  background: linear-gradient(135deg, #f6f9fc, #d4eaf7);
+  color: #2c3e50;
   min-height: 100vh;
   display: flex;
   justify-content: center;
@@ -19,14 +19,14 @@ body {
 
 /* Quiz Container */
 #quiz-container {
-  background: #ffffff;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 500px;
-  padding: 35px 30px;
+  max-width: 540px;
+  padding: 40px 35px;
   text-align: left;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 #quiz-container:hover {
@@ -36,17 +36,19 @@ body {
 /* Title */
 #quiz-container h1 {
   text-align: center;
-  color: #2c3e50;
-  font-size: 2rem;
-  margin-bottom: 20px;
+  font-size: 2.2rem;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #1a3c5d;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 /* Question */
 #question {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 20px;
-  color: #2c3e50;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 18px;
+  color: #34495e;
 }
 
 /* Options */
@@ -61,77 +63,97 @@ body {
   align-items: center;
   padding: 12px 16px;
   border: 2px solid #ddd;
-  border-radius: 10px;
-  background-color: #f9f9f9;
+  border-radius: 12px;
+  background-color: #f8f9fa;
   cursor: pointer;
   transition: background-color 0.3s, border-color 0.3s;
 }
 
 #options input[type="radio"] {
-  margin-right: 10px;
+  margin-right: 12px;
   transform: scale(1.2);
 }
 
 #options label:hover {
-  background-color: #eef6ff;
-  border-color: #76b7f0;
+  background-color: #e0f0ff;
+  border-color: #3399ff;
 }
 
-/* Button group layout */
+/* Button group */
 .button-group {
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
-  gap: 10px;
+  gap: 14px;
+  flex-wrap: wrap;
 }
 
-/* Common button style */
+/* Buttons */
 .button {
   flex: 1;
-  padding: 12px;
+  padding: 12px 16px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
-  border-radius: 8px;
+  border-radius: 10px;
   cursor: pointer;
-  transition: background 0.3s ease, transform 0.2s ease;
+  transition: background-color 0.3s, transform 0.2s ease;
 }
 
-/* Submit Button */
+/* Submit */
 .submit-button {
   background: #3498db;
   color: #fff;
 }
+
 .submit-button:hover {
   background-color: #2980b9;
-  transform: translateY(-2px);
+  transform: scale(1.04);
 }
 
-/* Back Button */
+/* Next */
+.next-button {
+  background: #2ecc71;
+  color: #fff;
+}
+
+.next-button:hover {
+  background-color: #27ae60;
+  transform: scale(1.04);
+}
+
+/* Back */
 .back-button {
   background: #cccccc;
   color: #333;
 }
+
 .back-button:hover {
   background-color: #b0b0b0;
-  transform: translateY(-2px);
+  transform: scale(1.04);
 }
 
 /* Result */
 #result {
+  margin-top: 24px;
   text-align: center;
-  margin-top: 20px;
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: #2c3e50;
+  font-size: 1.15rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 #result.correct {
-  color: #2ecc71;
-  font-weight: bold;
+  color: #27ae60;
 }
 
 #result.wrong {
-  color: #e74c3c;
+  color: #c0392b;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #2c7a7b;
   font-weight: bold;
+  text-align: center;
 }

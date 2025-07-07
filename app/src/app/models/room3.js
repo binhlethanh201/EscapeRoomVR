@@ -12,7 +12,7 @@ const Room3Schema = new Schema({
   completedInfor: String,
   panoramaFile: String,
   backgroundMusic: String,
-  hotspot: Schema.Types.Mixed,
+  hotspots: Schema.Types.Mixed,
 });
 
 module.exports = mongoose.model("Room3", Room3Schema);

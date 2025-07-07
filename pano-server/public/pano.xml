@@ -99,7 +99,7 @@
       <polyhotspot target="_self" title="Simple Maze" id="Poly03" description="" url="http://localhost:3000/room2/hotspot/poster">
         <polystring>-276.24/22.41|-301.95/16.53|-302.83/-16.79|-276.38/-22.75</polystring>
       </polyhotspot>
-      <polyhotspot target="_self" title="Rock-Paper-Scissors" id="Poly04" description="" url="http://localhost:3000/room2/hotspot/board">
+      <polyhotspot target="_self" title="Rock-Paper-Scissors" id="Poly04" description="Bảng ghi chú về Hồ Văn và bia Tiến Sĩ" url="http://localhost:3000/room2/hotspot/board">
         <polystring>-313.11/24.56|-332.11/26.72|-8.45/26.61|-42.39/22.3|-42.17/-28.85|-16.42/-30.95|-345.38/-31.22|-313.92/-29.61</polystring>
       </polyhotspot>
     </hotspots>
@@ -129,10 +129,10 @@
       <polyhotspot target="_self" title="" id="Poly01" description="" url="http://localhost:3000/room3/hotspot/door">
         <polystring>-218.63/18.29|-248.46/18.89|-249.17/-42.33|-217.95/-41.7</polystring>
       </polyhotspot>
-      <polyhotspot target="_self" title="Cửa sổ" id="Poly02" description="" url="http://localhost:8080/window">
+      <polyhotspot target="_self" title="Cửa sổ" id="Poly02" description="" url="http://localhost:3000/room3/hotspot/window">
         <polystring>-345.99/25.12|-2.86/26.29|-22.88/26.69|-46.34/25.64|-45.45/-29.81|-32.18/-29.61|-31.41/-23.18|-358.35/-22.85|-358.42/-26.06|-347.06/-25.05|-347.06/-25.05</polystring>
       </polyhotspot>
-      <polyhotspot target="_self" title="Bàn Học" id="Poly03" description="" url="http://localhost:8080/desk">
+      <polyhotspot target="_self" title="Bàn Học" id="Poly03" description="" url="http://localhost:3000/room3/hotspot/desk">
         <polystring>-52.39/-16.82|-67.44/-15.55|-74.86/-17.68|-75.06/-22.17|-68.56/-23.25</polystring>
       </polyhotspot>
       <polyhotspot target="_self" title="Bức tranh treo tường" id="Poly04" description="" url="http://localhost:3000/room3/hotspot/painting">
@@ -168,35 +168,6 @@
       </polyhotspot>
       <polyhotspot target="_self" title="Ghi Chú" id="Poly02" description="" url="http://localhost:8080/nhaTranNote">
         <polystring>-0.22/-5.67|-0.06/-14.21|-7.28/-14.1|-7.12/-5.69</polystring>
-      </polyhotspot>
-    </hotspots>
-    <media/>
-    <transition zoomspeed="2" zoomafteroutfov="40" zoomafterinfov="140" zoomin="0" type="crossdissolve" zoomfov="40" zoomout="0" blendtime="1" softedge="0" blendcolor="0x000000" delay="none" enabled="1" zoomoutpause="1"/>
-    <animation clipsrandom="0" animsequence="Animation01" syncanimationwithvideo="0" useinautorotation="0"/>
-    <control speedwheel="1" contextfullscreen="1" invertcontrol="1" sensitivity="8" lockedkeyboardzoom="0" zoomcentercursor="1" contextvr="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" rubberband="0" lockedwheel="0" lockedmouse="0" hideabout="0" lockedkeyboard="0" contextprojections="0"/>
-  </panorama>
-  <panorama id="node9">
-    <input levelingroll="0" leveltileurl="tiles/node9/cf_%c/l_%l/c_%x/tile_%y.jpg" width="1011" height="1011" levelbias="0.400" overlap="1" levelbiashidpi="1.000" levelingpitch="0" leveltilesize="510">
-      <level preload="0" width="1011" predecode="0" height="1011"/>
-      <level preload="1" width="505" predecode="1" height="505"/>
-      <preview strip="1" color="0x808080"/>
-    </input>
-    <view pannorth="0" fovmode="2">
-      <start fov="69.43" projection="4" pan="0.03" tilt="2.12"/>
-      <flyin fov="170" projection="9" pan="0" tilt="-90"/>
-      <min fovpixel="2" pan="-50" tilt="-26.1363"/>
-      <max fov="140" fovstereographic="330" fovfisheye="360" pan="50" tilt="26.1363"/>
-    </view>
-    <userdata heading="0" comment="" customnodeid="window" nodeid="node9" datetime="" source="" author="" info="" title="Window" tags="hotspots" latitude="" altitude="-3048.00" longitude="" description="" copyright=""/>
-    <hotspots smoothmovement="0" width="180" height="20" wordwrap="1">
-      <label bordercolor="0x000000" backgroundalpha="1" backgroundcolor="0xffffff" textcolor="0x000000" textalpha="1" border="1" width="180" background="1" borderalpha="1" height="20" wordwrap="1" borderradius="1" enabled="1"/>
-      <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
-      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room3" id="Point01" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-31.4" tilt="13.1" description="" customimagewidth="64"/>
-      <polyhotspot target="_self" title="Câu Đố" id="Poly01" description="" url="http://localhost:3000/room3/minigame/multiplequestion">
-        <polystring>-355.37/21.04|-351.3/21.29|-342.57/-8.06|-340.64/-15.27|-342.12/-20.38|-342.42/-22.73|-343.2/-25.37|-1.16/-26.4|-3.81/-19.94|-5.13/-14.8|-4.14/-11.36|-3.32/-9.28</polystring>
-      </polyhotspot>
-      <polyhotspot target="_self" title="Câu Đố" id="Poly02" description="" url="http://localhost:3000/room3/minigame/fillinblank">
-        <polystring>-329.78/-0.07|-332.02/-0.22|-336.8/-15.45|-337.92/-16.28|-338.06/-17.41|-337.22/-19.5|-336.11/-21.59|-335.3/-23.51|-331.51/-23.65|-325.26/-21.76|-324.18/-19.39</polystring>
       </polyhotspot>
     </hotspots>
     <media/>
@@ -296,37 +267,9 @@
       <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
       <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="{node7}" id="Point01" distance3D="365.762" fov="10" target="-119.7/17.0/117.0" title="" skinid="ht_node" customimageheight="64" pan="-42.55" tilt="15.76" description="" customimagewidth="64"/>
       <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point02" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-31.58" tilt="11.45" description="" customimagewidth="64"/>
+      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point03" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-338.48" tilt="5.69" description="" customimagewidth="64"/>
       <polyhotspot target="_blank" title="Thế kỉ 15" id="Poly01" description="" url="">
-        <polystring>-347.06/-17.75|-347.17/10.88|-348.35/11.77|-19.33/11.42|-19.83/10.25|-19.93/-17.16</polystring>
-      </polyhotspot>
-    </hotspots>
-    <media/>
-    <transition zoomspeed="2" zoomafteroutfov="40" zoomafterinfov="140" zoomin="0" type="crossdissolve" zoomfov="40" zoomout="0" blendtime="1" softedge="0" blendcolor="0x000000" delay="none" enabled="1" zoomoutpause="1"/>
-    <animation clipsrandom="0" animsequence="Animation01" syncanimationwithvideo="0" useinautorotation="0"/>
-    <control speedwheel="1" contextfullscreen="1" invertcontrol="1" sensitivity="8" lockedkeyboardzoom="0" zoomcentercursor="1" contextvr="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" rubberband="0" lockedwheel="0" lockedmouse="0" hideabout="0" lockedkeyboard="0" contextprojections="0"/>
-  </panorama>
-  <panorama id="node14">
-    <input levelingroll="0" leveltileurl="tiles/node14/cf_%c/l_%l/c_%x/tile_%y.jpg" width="3072" height="3072" levelbias="0.400" overlap="1" levelbiashidpi="1.000" levelingpitch="0" leveltilesize="510">
-      <level preload="0" width="3072" predecode="0" height="3072"/>
-      <level preload="0" width="1536" predecode="0" height="1536"/>
-      <level preload="0" width="768" predecode="0" height="768"/>
-      <level preload="1" width="384" predecode="1" height="384"/>
-      <preview strip="1" color="0x808080"/>
-    </input>
-    <view pannorth="0" fovmode="2">
-      <start fov="59.7015" projection="4" pan="-2.4922" tilt="-1.86333"/>
-      <flyin fov="170" projection="9" pan="0" tilt="-90"/>
-      <min fovpixel="2" pan="-30" tilt="-15.9381"/>
-      <max fov="140" fovstereographic="330" fovfisheye="360" pan="30" tilt="15.9381"/>
-    </view>
-    <userdata heading="0" comment="" customnodeid="leLoiBook" nodeid="node14" datetime="" source="" author="Le Thanh Binh (K18 HL)" info="" title="LeLoiBook" tags="Right" latitude="" altitude="-3048.00" longitude="" description="" copyright=""/>
-    <hotspots smoothmovement="0" width="180" height="20" wordwrap="1">
-      <label bordercolor="0x000000" backgroundalpha="1" backgroundcolor="0xffffff" textcolor="0x000000" textalpha="1" border="1" width="180" background="1" borderalpha="1" height="20" wordwrap="1" borderradius="1" enabled="1"/>
-      <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
-      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="{node7}" id="Point01" distance3D="365.762" fov="10" target="53.0/8.0/117.0" title="" skinid="ht_node" customimageheight="64" pan="-46.94" tilt="17.41" description="" customimagewidth="64"/>
-      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point02" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-22.9" tilt="9.07" description="" customimagewidth="64"/>
-      <polyhotspot target="_blank" title="Làm vua trong NĂM năm" id="Poly01" description="" url="">
-        <polystring>-343.95/-15.1|-343.91/9.91|-344.48/10.56|-13.77/10.6|-14.4/10.1|-14.56/-15.07|-14.71/-15.13|-14.71/-14.98</polystring>
+        <polystring>-347.06/-17.75|-347.17/10.88|-348.35/11.77|-19.33/11.42|-19.83/10.25|-19.85/-18.08</polystring>
       </polyhotspot>
     </hotspots>
     <media/>
@@ -363,6 +306,35 @@
       <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room3" id="Point01" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-37.94" tilt="15.97" description="" customimagewidth="64"/>
       <polyhotspot target="_blank" title="" id="Poly04" description="" url="">
         <polystring>-336.79/-5.21</polystring>
+      </polyhotspot>
+    </hotspots>
+    <media/>
+    <transition zoomspeed="2" zoomafteroutfov="40" zoomafterinfov="140" zoomin="0" type="crossdissolve" zoomfov="40" zoomout="0" blendtime="1" softedge="0" blendcolor="0x000000" delay="none" enabled="1" zoomoutpause="1"/>
+    <animation clipsrandom="0" animsequence="Animation01" syncanimationwithvideo="0" useinautorotation="0"/>
+    <control speedwheel="1" contextfullscreen="1" invertcontrol="1" sensitivity="8" lockedkeyboardzoom="0" zoomcentercursor="1" contextvr="1" simulatemass="1" invertwheel="0" dblclickfullscreen="0" rubberband="0" lockedwheel="0" lockedmouse="0" hideabout="0" lockedkeyboard="0" contextprojections="0"/>
+  </panorama>
+  <panorama id="node14">
+    <input levelingroll="0" leveltileurl="tiles/node14/cf_%c/l_%l/c_%x/tile_%y.jpg" width="3072" height="3072" levelbias="0.400" overlap="1" levelbiashidpi="1.000" levelingpitch="0" leveltilesize="510">
+      <level preload="0" width="3072" predecode="0" height="3072"/>
+      <level preload="0" width="1536" predecode="0" height="1536"/>
+      <level preload="0" width="768" predecode="0" height="768"/>
+      <level preload="1" width="384" predecode="1" height="384"/>
+      <preview strip="1" color="0x808080"/>
+    </input>
+    <view pannorth="0" fovmode="2">
+      <start fov="59.7015" projection="4" pan="-2.4922" tilt="-1.86333"/>
+      <flyin fov="170" projection="9" pan="0" tilt="-90"/>
+      <min fovpixel="2" pan="-30" tilt="-15.9381"/>
+      <max fov="140" fovstereographic="330" fovfisheye="360" pan="30" tilt="15.9381"/>
+    </view>
+    <userdata heading="0" comment="" customnodeid="leLoiBook" nodeid="node14" datetime="" source="" author="Le Thanh Binh (K18 HL)" info="" title="LeLoiBook" tags="Right" latitude="" altitude="-3048.00" longitude="" description="" copyright=""/>
+    <hotspots smoothmovement="0" width="180" height="20" wordwrap="1">
+      <label bordercolor="0x000000" backgroundalpha="1" backgroundcolor="0xffffff" textcolor="0x000000" textalpha="1" border="1" width="180" background="1" borderalpha="1" height="20" wordwrap="1" borderradius="1" enabled="1"/>
+      <polystyle backgroundcolor="0x0000ff" bordercolor="0x0000ff" mode="0" backgroundalpha="0.25098" borderalpha="1" handcursor="1"/>
+      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="{node7}" id="Point01" distance3D="365.762" fov="10" target="53.0/8.0/117.0" title="" skinid="ht_node" customimageheight="64" pan="-46.94" tilt="17.41" description="" customimagewidth="64"/>
+      <hotspot use3D="0" customimage="media/icons8-xbox-x-64-1.png" url="http://localhost:8080/room1" id="Point02" distance3D="365.762" fov="10" target="_self" title="" skinid="ht_url" customimageheight="64" pan="-22.9" tilt="9.07" description="" customimagewidth="64"/>
+      <polyhotspot target="_blank" title="Làm vua trong NĂM năm" id="Poly01" description="" url="">
+        <polystring>-343.95/-15.1|-343.91/9.91|-344.48/10.56|-13.77/10.6|-14.4/10.1|-14.56/-15.07|-14.71/-15.13|-14.71/-14.98</polystring>
       </polyhotspot>
     </hotspots>
     <media/>
