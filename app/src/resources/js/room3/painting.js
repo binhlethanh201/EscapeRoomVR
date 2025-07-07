@@ -50,9 +50,13 @@ submitBtn.addEventListener("click", () => {
   if (correct === dropZones.length) {
     result.textContent = "Chính Xác!";
     result.style.color = "green";
+    const messageEl = document.getElementById("message");
+    if (messageEl && messageEl.textContent.trim() !== "") {
+      messageEl.style.display = "block";
+    }
     setTimeout(() => {
       window.location.href = "http://localhost:8080/room3";
-    }, 1000);
+    }, 2000);
   } else {
     result.textContent = "Sai Rồi! Hãy Thử Lại.";
     result.style.color = "red";
@@ -65,7 +69,7 @@ submitBtn.addEventListener("click", () => {
         }
       });
       result.textContent = "";
-    }, 1000);
+    }, 2000);
   }
 });
 

@@ -37,6 +37,7 @@ h1 {
   border-radius: 14px;
   transition: background-color 0.3s;
 }
+
 #imagePool:hover {
   background-color: #eef6f9;
 }
@@ -52,6 +53,7 @@ h1 {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.2s, border-color 0.2s;
 }
+
 .draggable-img:active {
   transform: scale(0.95);
   border-color: #4caf50;
@@ -70,10 +72,12 @@ h1 {
   border-radius: 14px;
   transition: background-color 0.3s, border-color 0.3s;
 }
+
 .dropZone:hover {
   background-color: #e3f2fd;
   border-color: #007bff;
 }
+
 .dropZone.filled {
   border-style: solid;
   background-color: #d0f0c0;
@@ -103,6 +107,7 @@ button,
   color: white;
   border: none;
 }
+
 #submitBtn:hover {
   background-color: #218838;
   transform: scale(1.05);
@@ -114,6 +119,7 @@ button,
   color: white;
   border: none;
 }
+
 #resetBtn:hover {
   background-color: #5a6268;
   transform: scale(1.05);
@@ -125,6 +131,7 @@ button,
   background-color: transparent;
   color: #343a40;
 }
+
 .btn-outline-dark:hover {
   background-color: #343a40;
   color: white;
@@ -138,4 +145,12 @@ button,
   margin-top: 18px;
   color: #d63384;
   transition: color 0.3s ease;
+}
+
+.message {
+  margin-top: 20px;
+  font-size: 1.2em;
+  color: #2c7a7b;
+  font-weight: bold;
+  text-align: center;
 }

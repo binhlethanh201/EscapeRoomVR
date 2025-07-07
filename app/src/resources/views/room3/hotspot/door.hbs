@@ -14,9 +14,15 @@
 
     <!-- Input Fields -->
     <div class="space-y-3 mb-6">
-      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 1">
-      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 2">
-      <input type="text" class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]" placeholder="Yếu tố 3">
+      <input type="text"
+        class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]"
+        placeholder="Yếu tố 1">
+      <input type="text"
+        class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]"
+        placeholder="Yếu tố 2">
+      <input type="text"
+        class="answer-input w-full px-4 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#a3b18a]"
+        placeholder="Yếu tố 3">
     </div>
 
     <!-- Message -->
@@ -24,10 +30,12 @@
 
     <!-- Buttons -->
     <div class="flex justify-between">
-      <button onclick="window.location.href='http://localhost:8080/room3'" class="bg-[#e63946] hover:bg-[#d62828] text-white px-4 py-2 rounded-md font-medium shadow">
+      <button onclick="window.location.href='http://localhost:8080/room3'"
+        class="bg-[#e63946] hover:bg-[#d62828] text-white px-4 py-2 rounded-md font-medium shadow">
         ← Trở về
       </button>
-      <button onclick="checkTextInput()" class="bg-[#2a9d8f] hover:bg-[#21867a] text-white px-4 py-2 rounded-md font-medium shadow">
+      <button onclick="checkTextInput()"
+        class="bg-[#2a9d8f] hover:bg-[#21867a] text-white px-4 py-2 rounded-md font-medium shadow">
         Mở khóa
       </button>
     </div>
@@ -35,7 +43,7 @@
 
   <!-- Script -->
   <script>
-    const correctAnswers = {{{ json unlockCodeArray }}}; 
+    const correctAnswers = {{{ json unlockCodeArray }}};
     function checkTextInput() {
       const inputs = document.querySelectorAll(".answer-input");
       const userAnswers = Array.from(inputs).map(input => input.value.trim());
@@ -46,6 +54,10 @@
 
       if (allCorrect && userAnswers.length === 3) {
         message.textContent = "Mật khẩu đúng! Đang mở khóa...";
+        fetch("http://localhost:3000/room3/complete", {
+          method: "POST",
+          credentials: "include",
+        });
         setTimeout(() => {
           window.location.href = "http://localhost:8080";
         }, 1000);

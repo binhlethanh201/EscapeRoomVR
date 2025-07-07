@@ -17,4 +17,7 @@ router.get("/hotspot/back", Room1Controller.back);
 //[GET] /hotspot/door
 router.get("/hotspot/door", Room1Controller.door);
 
+//[POST] /complete
+router.post("/complete", Room1Controller.complete);
+
 module.exports = router;

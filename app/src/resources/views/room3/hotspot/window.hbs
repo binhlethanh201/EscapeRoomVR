@@ -1,23 +1,29 @@
-<h1>{{hotspot.name}}</h1>
-<p><strong>Clue:</strong> {{hotspot.clue}}</p>
-<p><strong>Message:</strong> {{hotspot.message}}</p>
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Minigames</h2>
-{{#each hotspot.interactionData}}
-<div class="minigame">
-  <h3>{{this.name}}</h3>
-  {{#if this.question}}
-  <p><strong>Question:</strong> {{this.question}}</p>
-  {{/if}}
-  {{#if this.options}}
-  <ul>
-    {{#each this.options}}
-    <li>{{this}}</li>
-    {{/each}}
-  </ul>
-  {{/if}}
-  {{#if this.answer}}
-  <p><strong>Answer:</strong> {{this.answer}}</p>
-  {{/if}}
-</div>
-{{/each}}
+<head>
+  <meta charset="UTF-8">
+  <title>Câu Đố Tinh Thần Cộng Đồng</title>
+  <link rel="stylesheet" href="/css/room3/hotspot/window.css">
+</head>
+
+<body>
+  <div id="quiz-container">
+    <h1>Câu Đố Tinh Thần Cộng Đồng</h1>
+    <div id="question-container"></div>
+    <div id="result" class="result"></div>
+    <div id="message" class="message" style="display: none;">{{message}}</div>
+    <div class="button-group">
+      <button type="button" id="submit-button" class="button submit-button">Gửi Câu Trả Lời</button>
+      <button type="button" id="next-button" class="button next-button" style="display: none;">Tiếp Theo</button>
+      <button onclick="window.history.back();" class="button back-button">Quay lại</button>
+    </div>
+  </div>
+
+  <script>
+    const questions = {{{ json questions }}};
+  </script>
+  <script src="/js/room3/window.js"></script>
+</body>
+
+</html>

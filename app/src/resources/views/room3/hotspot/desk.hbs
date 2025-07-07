@@ -1,11 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Desk Hotspot</title>
+    <title>Điền Vào Chỗ Trống</title>
     <link rel="stylesheet" href="/css/room3/hotspot/desk.css">
 </head>
+
 <body>
-    <h1>Welcome to the Desk Hotspot</h1>
+    <div id="game-container">
+        <h1>Câu Đố Tri Thức</h1>
+        <div class="row">
+            <div id="question-container"></div>
+        </div>
+        <div class="row">
+            <div id="message" class="message" style="display: none;">{{message}}</div>
+            <button id="submit-button" class="button">Gửi Câu Trả Lời</button>
+            <button id="next-button" class="button" style="display: none;">Tiếp Theo</button>
+            <button onclick="window.history.back();" class="button back-button">Quay lại</button>
+        </div>
+    </div>
+
+    <script>
+        const sentenceData = {{{ json sentenceData }}};
+    </script>
+    <script src="/js/room3/desk.js"></script>
 </body>
+
 </html>

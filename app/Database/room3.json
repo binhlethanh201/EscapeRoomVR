@@ -6,7 +6,7 @@
         "description": "Phòng ngủ hiện đại tích hợp công nghệ với các yếu tố tri thức và giá trị truyền thống.",
         "unlockCode": [
             "Văn Hóa",
-            "Tri Thức - Cội Nguồn",
+            "Tri Thức",
             "Tinh Thần"
         ],
         "order": 3,
@@ -14,7 +14,7 @@
         "completedInfor": "Những yếu tố cốt lõi hình thành nên một con người bao gồm: Lịch Sử - Văn Hoá - Gia Đình - Giáo Dục - Ngôn Ngữ - Niềm Tin - Kinh Nghiệm Sống - Cộng Đồng - Di Truyền.",
         "panoramaFile": "room3_main_panorama.jpg",
         "backgroundMusic": "music.mp3",
-        "hotspot": {
+        "hotspots": {
             "painting": {
                 "id": "room3Painting",
                 "name": "Di sản Văn hóa Thủ đô",
@@ -24,72 +24,48 @@
                 "message": "Bạn đã khám phá di sản văn hóa làng nghề truyền thống!",
                 "hint": "",
                 "interactionData": {
-                    "type": "dragAndDrop",
-                    "title": "Làng Nghề Truyền Thống",
-                    "config": {
-                        "items": [
-                            {
-                                "id": "bat_trang",
-                                "name": "Bát Tràng",
-                                "category": "Gốm"
-                            },
-                            {
-                                "id": "ha_thai",
-                                "name": "Hạ Thái",
-                                "category": "Sơn mài"
-                            },
-                            {
-                                "id": "van_phuc",
-                                "name": "Vạn Phúc",
-                                "category": "Lụa"
-                            },
-                            {
-                                "id": "vong",
-                                "name": "Vòng",
-                                "category": "Cốm"
-                            }
-                        ],
-                        "categories": [
-                            "Gốm",
-                            "Sơn mài",
-                            "Lụa",
-                            "Cốm"
-                        ],
-                        "description": "Hãy ghép nối các làng nghề truyền thống với sản phẩm đặc trưng!"
-                    }
+                    "id": "dragAndDrop",
+                    "name": "Ghép và nối hình",
+                    "hint": "Hãy ghép nối các làng nghề truyền thống với sản phẩm đặc trưng!"
                 }
             },
             "desk": {
                 "id": "room3Desk",
                 "name": "Khu Vực Bàn Học",
-                "type": "clue",
-                "clue": "Tri Thức - Cội Nguồn",
+                "type": "minigame",
+                "clue": "Tri Thức",
                 "isRequired": true,
-                "message": "Bạn đã khám phá được manh mối về Tri Thức và Cội Nguồn - nền tảng của sự phát triển!",
+                "message": "Bạn đã khám phá được manh mối về Tri Thức - nền tảng của sự phát triển!",
                 "hint": "",
-                "interactionData": {
-                    "title": "Tri thức và Cội nguồn",
-                    "items": [
-                        {
-                            "id": "familyPhoto",
-                            "name": "Bức ảnh gia đình",
-                            "content": "Công cha như núi Thái Sơn, nghĩa mẹ như nước trong nguồn chảy ra",
-                            "hint": "Giá trị gia đình và lòng hiếu thảo"
-                        },
-                        {
-                            "id": "deskBook",
-                            "name": "Cuốn Vở Ghi Chép",
-                            "content": "Kiến thức là hành trang, tri thức là ánh sáng",
-                            "hint": "Vai trò của học vấn trong cuộc sống"
-                        },
-                        {
-                            "id": "deskNote",
-                            "name": "Tờ giấy ghi chú",
-                            "content": "Học ăn học nói học gói học mở",
-                            "hint": "Quá trình rèn luyện bản thân toàn diện"
-                        }
-                    ]
-                }
+                "interactionData": [
+                    {
+                        "id": "fillInBlank1",
+                        "name": "Hãy Điền Vào Chỗ Trống",
+                        "question": "Ông cha ta có câu: 'Học ăn, học nói, học gói, học ___.'.",
+                        "answer": [
+                            "mở"
+                        ],
+                        "hint": "Thành ngữ nhấn mạnh việc học toàn diện trong cách ứng xử, sinh hoạt."
+                    },
+                    {
+                        "id": "fillInBlank2",
+                        "name": "Hãy Điền Vào Chỗ Trống",
+                        "question": "Tục ngữ có câu: 'Công cha như núi Thái Sơn, nghĩa mẹ như nước trong ___ chảy ra'.",
+                        "answer": [
+                            "nguồn"
+                        ],
+                        "hint": "Câu tục ngữ thể hiện công lao sinh thành, dưỡng dục to lớn của cha mẹ."
+                    },
+                    {
+                        "id": "fillInBlank3",
+                        "name": "Hãy Điền Vào Chỗ Trống",
+                        "question": "Truyền thống 'lá lành đùm ___' thể hiện tinh thần tương thân tương ái của dân tộc ta.",
+                        "answer": [
+                            "lá rách"
+                        ],
+                        "hint": "Một tục ngữ quen thuộc nói về sự giúp đỡ lẫn nhau trong cộng đồng."
+                    }
+                ]
             },
             "window": {
                 "id": "room3Window",
@@ -97,32 +73,32 @@
                 "type": "minigame",
                 "clue": "Tinh Thần",
                 "isRequired": true,
-                "message": "Bạn đã khám phá được manh mối về Tinh thần cộng đồng là sức mạnh của xã hội!",
+                "message": "Bạn đã khám phá được manh mối về Tinh thần - nền tảng của sự phát triển!",
                 "hint": "",
                 "interactionData": [
                     {
-                        "id": "multipleChoice",
+                        "id": "multipleChoice1",
                         "name": "Hãy Chọn Đáp Án Đúng",
-                        "question": "Tinh thần cộng đồng được thể hiện rõ nhất qua hành động nào sau đây?",
+                        "question": "Câu tục ngữ nào sau đây thể hiện tinh thần đoàn kết, gắn bó trong cộng đồng?",
                         "options": [
-                            "Chỉ quan tâm đến lợi ích cá nhân",
-                            "Sẵn sàng giúp đỡ người khác khi họ gặp khó khăn",
-                            "Tránh xa những việc không liên quan đến mình",
-                            "Chỉ giúp đỡ người thân trong gia đình"
+                            "Ăn cây nào, rào cây nấy",
+                            "Lá lành đùm lá rách",
+                            "Chuyện nhà ai, người ấy lo",
+                            "Tốt gỗ hơn tốt nước sơn"
                         ],
-                        "answer": "Sẵn sàng giúp đỡ người khác khi họ gặp khó khăn"
+                        "answer": "Lá lành đùm lá rách"
                     },
                     {
-                        "id": "fillInBlank",
-                        "name": "Hãy Điền Vào Chỗ Trống",
-                        "question": "Để Hà Nội xanh sạch đẹp, cần sự ___ của mỗi người.",
-                        "answer": [
-                            "chung tay",
-                            "đồng lòng",
-                            "góp sức",
-                            "hợp tác"
+                        "id": "multipleChoice2",
+                        "name": "Hãy Chọn Đáp Án Đúng",
+                        "question": "Trong cuộc sống, việc giữ vững niềm tin thường giúp chúng ta điều gì?",
+                        "options": [
+                            "Dễ dàng bỏ cuộc khi gặp khó khăn",
+                            "Tránh phải đưa ra quyết định",
+                            "Kiên trì vượt qua thử thách",
+                            "Phụ thuộc hoàn toàn vào người khác"
                         ],
-                        "hint": "Hành động cùng nhau vì mục tiêu chung, thể hiện tinh thần cộng đồng và trách nhiệm với môi trường sống."
+                        "answer": "Kiên trì vượt qua thử thách"
                     }
                 ]
             },
