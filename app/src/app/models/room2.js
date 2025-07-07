@@ -8,7 +8,7 @@ const Room2 = new Schema({
   name: { type: String, required: true },
   theme: { type: String, required: true },
   description: { type: String, required: true },
-  unlockCode: [{ type: String }],
+  unlockCode: { type: String },
   order: { type: Number },
   completedMessage: { type: String },
   completedInfor: { type: String },

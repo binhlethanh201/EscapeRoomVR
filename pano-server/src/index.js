@@ -8,7 +8,7 @@ const staticPath = path.join(__dirname, "../public");
 app.use(express.static(staticPath));
 
 // Xử lý các node ảo: room1, room2, room3
-const panoNodes = ["room1", "room2", "room3"];
+const panoNodes = ["room1", "room2", "room3", "left" ,"daThanhNote" , "nhaTranNote", "hoGuomBook", "leLoiBook", "center", "desk", "window"];
 panoNodes.forEach((node) => {
   //gán /room1 (/room2 || /room3) cho index
   app.get(`/${node}`, (req, res) => {
