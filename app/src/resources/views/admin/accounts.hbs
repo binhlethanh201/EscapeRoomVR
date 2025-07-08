@@ -26,25 +26,37 @@
       <tr>
         <td>{{this.username}}</td>
         <td>{{this.email}}</td>
-        <td>{{this.status}}</td>
+        <td>
+          {{#if (eq this.status "active")}}
+          <span class="status-active">Hoạt Động</span>
+          {{else}}
+          <span class="status-inactive">Ngừng Hoạt Động</span>
+          {{/if}}
+        </td>
         <td>{{formatDate this.profile.createdAt}}</td>
         <td>{{formatDate this.lastLogin}}</td>
         <td>
-          {{#if (eq this.status "active")}}
-          <form action="/admin/account/{{this._id}}/deactivate" method="POST">
-            <button type="submit">Vô hiệu hóa</button>
-          </form>
-          {{else}}
-          <form action="/admin/account/{{this._id}}/activate" method="POST">
-            <button type="submit">Kích hoạt</button>
-          </form>
-          {{/if}}
+          <div class="actions">
+            <form action="/admin/account/{{this._id}}" method="GET">
+              <button type="submit" class="btn view-button">Chi tiết</button>
+            </form>
+
+            {{#if (eq this.status "active")}}
+            <form action="/admin/account/{{this._id}}/deactivate" method="POST">
+              <button type="submit" class="btn deactivate-button">Vô hiệu hóa</button>
+            </form>
+            {{else}}
+            <form action="/admin/account/{{this._id}}/activate" method="POST">
+              <button type="submit" class="btn activate-button">Kích hoạt</button>
+            </form>
+            {{/if}}
+          </div>
         </td>
       </tr>
       {{/each}}
     </tbody>
   </table>
-  <button onclick="window.location.href='/admin/dashboard'" class="back-button">Quay lại</button>
+  <button onclick="window.location.href='/admin/dashboard'" class="back-button">← Quay lại</button>
 
 </body>
 

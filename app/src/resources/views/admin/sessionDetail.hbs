@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chi tiết tiến trình người chơi {{username}}</title>
+    <link rel="stylesheet" href="/css/admin/sessionDetail.css" />
+</head>
+
+<body>
+    <div class="container">
+
+        <div class="header-row">
+            <h2>Chi tiết tiến trình người chơi: <span class="username">{{username}}</span></h2>
+        </div>
+
+        {{#each session.gameData.roomProgress}}
+        <details class="room-container">
+            <summary class="room-summary">
+                <strong>Phòng:</strong> <span class="room-name">{{@key}}</span>
+                —
+                <span class="status">
+                    {{#if this.isCompleted}}
+                    <span class="completed-yes">Đã hoàn thành</span>
+                    {{else}}
+                    <span class="completed-no">Chưa hoàn thành</span>
+                    {{/if}}
+                </span>
+            </summary>
+            <br>
+            <div class="room-content">
+                <p><strong>Số lượt thử:</strong> {{this.attempts}}</p>
+                <p><strong>Gợi ý tìm được:</strong> {{#if this.cluesFound}}{{this.cluesFound.length}}{{else}}0{{/if}}
+                </p>
+                <p> <strong>Trạng thái:</strong>
+                    {{#if (eq this.status "available")}}
+                    <span class="completed-yes">Đã mở</span>
+                    {{else}}
+                    <span class="completed-no">Chưa mở</span>
+                    {{/if}}
+                </p>
+                {{#if this.lastVisited}}
+                <p><strong>Truy cập lần cuối:</strong> {{formatDate this.lastVisited}}</p>
+                {{/if}}
+
+                {{#if this.hotspotProgress}}
+                <div class="hotspot-container">
+                    <p><strong>Hotspot đã tương tác:</strong></p>
+                    {{#each this.hotspotProgress}}
+                    <div class="hotspot-group">
+                        <strong class="hotspot-name">{{@key}}:</strong>
+                        <ul>
+                            {{#each this}}
+                            <li>
+                                Tương tác lúc: {{formatDate this.interactedAt}}
+                                {{#if this.data.isCompleted}} <span class="completed-label">(Hoàn thành)</span>{{/if}}
+                            </li>
+                            {{/each}}
+                        </ul>
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+            </div>
+        </details>
+        {{/each}}
+
+        <button onclick="window.location.href='/admin/sessions'" class="btn back-button">← Quay lại</button>
+    </div>
+</body>
+
+</html>

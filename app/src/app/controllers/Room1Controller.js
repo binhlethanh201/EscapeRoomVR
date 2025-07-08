@@ -1,7 +1,7 @@
 const Room1 = require("../models/room1");
 const saveSession = require("../../util/saveSession");
 class Room1Controller {
-  //[GET] /hotspots
+
   //[GET] /hotspots/center
   async center(req, res, next) {
     await saveSession(req, "room1", "hotspot", "center");
@@ -28,8 +28,12 @@ class Room1Controller {
       await saveSession(req, "room1", "hotspot", "door");
       const room = await Room1.findById("room1");
       const unlockCode = room?.unlockCode;
+      const completeInfo = room?.completedInfor || "";
+      const completeMessage = room?.completedMessage || "";
       res.render("room1/hotspot/door", {
         unlockCodeArray: unlockCode.split("").map(Number),
+        completeInfo,
+        completeMessage,
       });
     } catch (error) {
       next(error);

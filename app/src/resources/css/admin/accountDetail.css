@@ -1,0 +1,132 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #c8a88a;
+  margin: 0;
+  padding: 40px 20px;
+  color: #333;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.container {
+  background-color: #fff;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+  padding: 30px 40px;
+}
+
+h2 {
+  color: #5f1a04;
+  font-weight: 700;
+  font-size: 2rem;
+  margin-bottom: 30px;
+  text-align: center;
+  letter-spacing: 0.04em;
+}
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1rem;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #faf5f0;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.03);
+}
+
+.label {
+  color: #7a4a18;
+  font-weight: 600;
+  flex: 0 0 150px;
+}
+
+.value {
+  color: #3b2f25;
+  font-weight: 500;
+  text-align: right;
+  word-break: break-word;
+}
+
+.status.active {
+  background-color: #d1f5d3;
+  color: #15803d;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.status.inactive {
+  background-color: #fddede;
+  color: #b91c1c;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-weight: 700;
+  width: fit-content;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  background-color: #4f46e5;
+  color: white;
+  font-weight: 700;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px rgba(79, 70, 229, 0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn:hover {
+  background-color: #4338ca;
+  box-shadow: 0 8px 20px rgba(67, 56, 202, 0.6);
+}
+
+.activate-button {
+  background-color: #22c55e;
+  box-shadow: 0 5px 12px rgba(34, 197, 94, 0.5);
+}
+
+.activate-button:hover {
+  background-color: #16a34a;
+  box-shadow: 0 8px 20px rgba(22, 163, 74, 0.7);
+}
+
+.deactivate-button {
+  background-color: #ef4444;
+  box-shadow: 0 5px 12px rgba(239, 68, 68, 0.5);
+}
+
+.deactivate-button:hover {
+  background-color: #dc2626;
+  box-shadow: 0 8px 20px rgba(220, 38, 38, 0.7);
+}

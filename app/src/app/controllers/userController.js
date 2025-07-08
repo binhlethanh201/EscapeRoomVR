@@ -3,6 +3,7 @@ const bcrypt = require("bcryptjs");
 const { moongseToObject } = require("../../util/mongoose");
 
 class UserController {
+
   //[GET] /profile/:id
   async profile(req, res, next) {
     try {

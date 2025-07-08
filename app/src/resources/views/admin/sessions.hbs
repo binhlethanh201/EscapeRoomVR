@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Quản lý tiến trình người chơi</title>
+  <link rel="stylesheet" href="/css/admin/sessions.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2>Danh sách tiến trình người chơi</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Username</th>
+          <th>Phòng đã mở</th>
+          <th>Phòng hoàn thành</th>
+          <th>Tổng số gợi ý tìm được</th>
+          <th>Hành động</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each sessions}}
+        <tr onclick="window.location.href='/admin/session/{{this.userId}}'">
+          <td>{{this.username}}</td>
+          <td>{{#each this.roomsUnlocked}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</td>
+          <td>{{#each this.roomsCompleted}}{{this}}{{#unless @last}}, {{/unless}}{{/each}}</td>
+          <td>{{this.totalCluesFound}}</td>
+          <td><a href="/admin/session/{{this.userId}}">Xem chi tiết</a></td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <button onclick="window.location.href='/admin/dashboard'" class="back-button">← Quay lại</button>
+  </div>
+</body>
+
+</html>

@@ -35,10 +35,7 @@ function loadCurrentQuestion() {
     questionBlock.appendChild(label);
     questionBlock.appendChild(document.createElement("br"));
   });
-
   container.appendChild(questionBlock);
-
-  // Reset buttons
   document.getElementById("submit-button").style.display = "inline-block";
   document.getElementById("next-button").style.display = "none";
 }
@@ -52,31 +49,33 @@ function checkAnswer() {
     result.classList.add("wrong");
     return;
   }
-
   const correctAnswer = questions[currentQuestionIndex].answer;
-
   if (selectedOption === correctAnswer) {
     result.textContent = "Chính xác!";
     result.classList.add("correct");
-
-    // Điều khiển nút
     document.getElementById("submit-button").style.display = "none";
+
     if (currentQuestionIndex < questions.length - 1) {
       document.getElementById("next-button").style.display = "inline-block";
     } else {
-      const messageEl = document.getElementById("message");
-      if (messageEl && messageEl.textContent.trim() !== "") {
-        messageEl.style.display = "block";
-      }
+      const popup = document.getElementById("popup-message");
+      popup.style.display = "flex";
+      const popupClose = document.getElementById("popup-close");
+      popupClose.onclick = () => {
+        popup.style.display = "none";
+        window.location.href = "http://localhost:8080/room3";
+      };
       setTimeout(() => {
-        window.history.back();
-      }, 2000);
+        window.location.href = "http://localhost:8080/room3";
+      }, 3000);
     }
   } else {
     result.textContent = "Sai rồi! Hãy thử lại";
     result.classList.add("wrong");
   }
 }
+
+
 
 function nextQuestion() {
   currentQuestionIndex++;

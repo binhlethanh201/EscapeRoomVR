@@ -1,6 +1,7 @@
 const Room3 = require("../models/room3");
 const saveSession = require("../../util/saveSession");
 class Room3Controller {
+
   //[GET] /hotspot/painting
   async painting(req, res, next) {
     await saveSession(req, "room3", "hotspot", "painting");
@@ -14,8 +15,12 @@ class Room3Controller {
       await saveSession(req, "room3", "hotspot", "door");
       const room = await Room3.findById("room3");
       const unlockCode = room?.unlockCode;
+      const completeInfo = room?.completedInfor || "";
+      const completeMessage = room?.completedMessage || "";
       res.render("room3/hotspot/door", {
         unlockCodeArray: unlockCode,
+        completeInfo,
+        completeMessage,
       });
     } catch (error) {
       next(error);
@@ -51,7 +56,6 @@ class Room3Controller {
       res.status(500).send("Lỗi khi lấy dữ liệu từ MongoDB");
     }
   }
-
 
   // [GET] /hotspot/window
   async window(req, res) {

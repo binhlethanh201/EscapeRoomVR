@@ -179,7 +179,6 @@ class AuthController {
     }
   }
 
-  //forgot password
   //[POST] /forgotpassword
   async forgotPassword(req, res) {
     const { username } = req.body;

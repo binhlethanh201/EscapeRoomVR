@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Room2 = new Schema({
-        
-    
+
+
   id: { type: String, required: true },
   name: { type: String, required: true },
   theme: { type: String, required: true },
