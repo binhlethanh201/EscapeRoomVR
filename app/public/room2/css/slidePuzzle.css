@@ -1,67 +1,146 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    font-family: "Poppins", sans-serif;
-}
-img {
-    max-width: 100%;
-}
-.slider-game {
-    width: 80%;
-    display: flex;
-    justify-content: space-between;
-    margin: 0 auto;
-    margin-top: 5%;
-}
-.container {
-    display: grid;
-    width: 25em;
-    height: 25em;
-    grid-template-columns: repeat(3, 1fr);
-    grid-auto-rows: 8em;
-}
-.original-image {
-    width: 25em;
-    height: 25em;
-}
-.image-container {
-    border: 1px solid #ffffff;
-}
-.controls {
-    position: relative;
-    margin: 1em;
-    text-align: left;
-}
-#back-button {
-    font-size: 1.2em;
-    padding: 0.8em 2em;
-    border: none;
-    border-radius: 3em;
-    cursor: pointer;
-    background-color: #643843;
-    color: white;
-}
-#moves {
-    position: relative;
-    margin: 1em;
-    text-align: right;
-}
-.hide {
-    display: none;
-}
-@media only screen and (max-width: 768px) {
-    .slider-game {
-        flex-direction: column;
-    }
-    .container {
-        width: 20em;
-        height: 20em;
-        grid-auto-rows: 6em;
-    }
-    .original-image {
-        width: 20em;
-        height: 20em;
-    }
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .game-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            width: 500px;
+        }
+
+        .main > h1 {
+            font-size: 50px;
+            color: #292929;
+            margin-bottom: 20px;
+        }
+
+        .puzzle-container {
+            display: flex;
+            justify-content: center;
+        }
+
+        .puzzle {
+            display: grid;
+            width: 25em;
+            height: 25em;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 8em;
+        }
+
+        .image-container {
+            border: 1px solid #ffffff;
+        }
+
+        .puzzle-container img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-image {
+            width: 28em;
+            height: 28em;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+            background-color: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            margin-top: 20px;
+            margin-left: 40px;
+        }
+
+        .main-image p {
+            font-size: 18px;
+            color: #292929;
+            margin-bottom: 10px;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: calc(25em - 40px);
+            object-fit: cover;
+        }
+
+        .moves {
+            margin-top: 10px;
+            font-size: 24px;
+            color: #292929;
+        }
+
+        .controls {
+            margin-top: 20px;
+        }
+
+        #back-button {
+            margin-top: 20px;
+            margin-left: 50px;
+            font-size: 24px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 5px;
+            box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+            background-color: #643843;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        #back-button:hover {
+            background-color: #7b4a5a;
+        }
+
+        @media only screen and (max-width: 768px) {
+            .game-container {
+                flex-direction: column;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .main {
+                width: 90%;
+                padding: 20px;
+            }
+
+            .puzzle {
+                width: 20em;
+                height: 20em;
+                grid-auto-rows: 6em;
+            }
+
+            .main-image {
+                width: 20em;
+                height: 20em;
+            }
+
+            .main-image img {
+                height: calc(20em - 40px);
+            }
+        }

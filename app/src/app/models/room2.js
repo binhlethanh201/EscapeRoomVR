@@ -1,14 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const Room2 = new Schema({
-
-
-  id: { type: String, required: true },
+const Room2Schema = new Schema({
+  _id: { type: String, required: true }, // Đổi từ 'id' thành '_id' để đồng bộ với MongoDB
   name: { type: String, required: true },
   theme: { type: String, required: true },
   description: { type: String, required: true },
-  unlockCode: [{ type: String }],
+  unlockCode: { type: String, required: true }, 
   order: { type: Number },
   completedMessage: { type: String },
   completedInfor: { type: String },
@@ -16,17 +14,15 @@ const Room2 = new Schema({
   backgroundMusic: { type: String },
   hotspots: {
     painting: {
-      id: String,
-      name: String,
-      type: String,
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      type: { type: String, required: true },
       clue: String,
       isRequired: Boolean,
       message: String,
       hint: String,
       minigame: {
-        type: {
-          type: String,
-        },
+        type: { type: String, required: true },
         title: String,
         config: {
           gridSize: String,
@@ -36,17 +32,15 @@ const Room2 = new Schema({
       }
     },
     poster: {
-      id: String,
-      name: String,
-      type: String,
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      type: { type: String, required: true },
       clue: String,
       isRequired: Boolean,
       message: String,
       hint: String,
       minigame: {
-        type: {
-          type: String,
-        },
+        type: { type: String, required: true },
         title: String,
         config: {
           rounds: Number
@@ -54,17 +48,15 @@ const Room2 = new Schema({
       }
     },
     board: {
-      id: String,
-      name: String,
-      type: String,
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      type: { type: String, required: true },
       clue: String,
       isRequired: Boolean,
       message: String,
       hint: String,
       minigame: {
-        type: {
-          type: String,
-        },
+        type: { type: String, required: true },
         title: String,
         config: {
           size: String,
@@ -75,18 +67,18 @@ const Room2 = new Schema({
       }
     },
     door: {
-      id: String,
-      name: String,
-      type: String,
+      id: { type: String, required: true },
+      name: { type: String, required: true },
+      type: { type: String, required: true },
       isRequired: Boolean,
       interactionData: {
-        type: String,
+        type: { type: String, required: true },
         codeLength: Number,
         hint: String,
         instructions: String
       }
     }
   }
-
 });
-module.exports = mongoose.model('Room2', Room2);
+
+module.exports = mongoose.model('Room2', Room2Schema);
