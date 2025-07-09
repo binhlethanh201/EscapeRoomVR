@@ -1,8 +1,10 @@
-
-        const puzzleContainer = document.querySelector('.puzzle-container');
+const puzzleContainer = document.querySelector('.puzzle-container');
         const moves = document.querySelector('.moves');
         const puzzle = document.querySelector('.puzzle');
         const backButton = document.getElementById('back-button');
+        const modal = document.getElementById('win-modal');
+        const moveCountSpan = document.getElementById('move-count');
+        const modalOkButton = document.getElementById('modal-ok-button');
         let currentElement = "";
         let movesCount = 0;
         let imagesArr = [];
@@ -38,6 +40,7 @@
         };
 
         const generateGrid = () => {
+            puzzle.innerHTML = ''; // Clear existing grid
             let count = 0;
             for (let i = 0; i < 3; i++) {
                 for (let j = 0; j < 3; j++) {
@@ -49,6 +52,23 @@
                     count += 1;
                     puzzle.appendChild(div);
                 }
+            }
+        };
+
+        const setCustomImageOrder = (customOrder) => {
+            if (customOrder.length === 9 && customOrder.every(num => num >= 1 && num <= 9 && customOrder.indexOf(num) === customOrder.lastIndexOf(num))) {
+                imagesArr = [...customOrder];
+                movesCount = 0;
+                moves.innerText = `Moves: ${movesCount}`;
+                generateGrid();
+                if (imagesArr.join("") === "123456789") {
+                    setTimeout(() => {
+                        moveCountSpan.innerText = movesCount;
+                        modal.style.display = 'flex';
+                    }, 1000);
+                }
+            } else {
+                console.error("Invalid custom order. Must be an array of 9 unique numbers from 1 to 9.");
             }
         };
 
@@ -83,19 +103,18 @@
 
                 if (imagesArr.join("") === "123456789") {
                     setTimeout(() => {
-                        alert(`Congratulations! You solved the puzzle in ${movesCount} moves!`);
-                        puzzle.innerHTML = '';
-                        imagesArr = [];
-                        randomImages();
-                        generateGrid();
-                        movesCount = 0;
-                        moves.innerText = `Moves: ${movesCount}`;
+                        moveCountSpan.innerText = movesCount;
+                        modal.style.display = 'flex';
                     }, 1000);
                 }
             }
         };
 
         backButton.addEventListener("click", () => {
+            window.location.href = "http://localhost:8080/room2";
+        });
+
+        modalOkButton.addEventListener("click", () => {
             window.location.href = "http://localhost:8080/room2";
         });
 
@@ -106,5 +125,6 @@
             imagesArr = [];
             randomImages();
             generateGrid();
+            // For testing the win condition, you can call setCustomImageOrder with a specific order
+            // Example: setCustomImageOrder([1, 2, 3, 4, 5, 6, 7, 8, 9]);
         };
-    
