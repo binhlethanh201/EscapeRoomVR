@@ -16,6 +16,26 @@ class AdminController {
         }
     }
 
+    // [GET] /admin/account/:id/view
+    async viewAccountReadOnly(req, res) {
+        try {
+            const user = await User.findById(req.params.id).lean();
+            if (!user) {
+                return res.status(404).render("errors/404", {
+                    message: "Không tìm thấy tài khoản",
+                });
+            }
+
+            res.render("admin/accountDetailReadOnly", { user });
+        } catch (error) {
+            console.error("Lỗi khi lấy chi tiết tài khoản (read only):", error);
+            res.status(500).render("errors/500", {
+                message: "Lỗi server khi lấy chi tiết tài khoản",
+            });
+        }
+    }
+
+
     //[POST] /admin/account/:id/deactivate
     async inactivateAccount(req, res) {
         try {
@@ -27,7 +47,7 @@ class AdminController {
             }
             user.status = "inactive";
             await user.save();
-            res.redirect("/admin/accounts");
+            res.redirect(`/admin/accounts`);
         } catch (error) {
             console.log(error);
             res.status(500).json({
@@ -45,7 +65,7 @@ class AdminController {
             }
             user.status = "active";
             await user.save();
-            res.redirect("/admin/accounts");
+            res.redirect(`/admin/accounts`);
         } catch (error) {
             console.log(error);
             res.status(500).json({ message: "Lỗi khi kích hoạt tài khoản" });
@@ -116,6 +136,47 @@ class AdminController {
 
         } catch (error) {
             console.error("Lỗi khi lấy session chi tiết:", error);
+            res.status(500).send("Lỗi server");
+        }
+    }
+
+    // [GET] /admin/authtokens
+    async getAllAuthTokens(req, res) {
+        try {
+            const authTokens = await Authentication.find({});
+            const userIds = authTokens.map(t => t.userId);
+            const users = await User.find({ _id: { $in: userIds } });
+            const userMap = new Map(users.map(u => [u._id.toString(), u.username]));
+
+            res.render("admin/authtokens", {
+                tokens: authTokens.map(token => ({
+                    _id: token._id,
+                    userId: token.userId,
+                    username: userMap.get(token.userId) || "Không rõ",
+                    expiresAt: token.expiresAt,
+                    createdAt: token.createdAt,
+                }))
+            });
+        } catch (error) {
+            console.error("Lỗi khi lấy token:", error);
+            res.status(500).send("Lỗi server");
+        }
+    }
+
+    // [GET] /admin/authtoken/:userId
+    async getAuthTokensByUser(req, res) {
+        try {
+            const tokens = await Authentication.find({ userId: req.params.userId });
+            const user = await User.findById(req.params.userId);
+            if (!user) return res.status(404).send("Không tìm thấy người dùng");
+
+            res.render("admin/authTokenDetail", {
+                username: user.username,
+                userId: user._id,
+                tokens: tokens.map(t => t.toObject())
+            });
+        } catch (err) {
+            console.error("Lỗi khi lấy tokens theo user:", err);
             res.status(500).send("Lỗi server");
         }
     }

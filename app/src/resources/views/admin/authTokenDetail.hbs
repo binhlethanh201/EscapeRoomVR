@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Chi tiết Token</title>
+    <link rel="stylesheet" href="/css/admin/authTokenDetail.css" />
+</head>
+
+<body>
+    <div class="container">
+        <h2 class="title">Chi tiết Token của {{username}}</h2>
+
+        <table class="token-table">
+            <thead>
+                <tr>
+                    <th>Token</th>
+                    <th>Thời gian tạo</th>
+                    <th>Thời gian hết hạn</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each tokens}}
+                <tr>
+                    <td class="token-cell">{{this.token}}</td>
+                    <td>{{formatDate this.createdAt}}</td>
+                    <td>{{formatDate this.expiresAt}}</td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div class="button-group">
+            <button onclick="window.location.href='/admin/authtokens'" class="back-button">← Quay lại</button>
+            <button onclick="window.location.href='/admin/account/{{userId}}/view'" class="detail-button">Chi tiết tài
+                khoản</button>
+        </div>
+    </div>
+</body>
+
+</html>

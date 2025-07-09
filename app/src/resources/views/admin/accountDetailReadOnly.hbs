@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Chi tiết tài khoản</title>
+  <link rel="stylesheet" href="/css/admin/accountDetail.css">
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Chi tiết tài khoản</h2>
+
+    <div class="user-card">
+      <div class="user-info">
+        <div class="info-row">
+          <span class="label">Tên đăng nhập:</span>
+          <span class="value">{{user.username}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Email:</span>
+          <span class="value">{{user.email}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Trạng thái:</span>
+          <span class="value status {{user.status}}">
+            {{#if (eq user.status "active")}}Hoạt Động{{else}}Ngừng Hoạt Động{{/if}}
+          </span>
+        </div>
+        <div class="info-row">
+          <span class="label">Ngày tạo:</span>
+          <span class="value">{{formatDate user.profile.createdAt}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Đăng nhập gần nhất:</span>
+          <span class="value">{{formatDate user.lastLogin}}</span>
+        </div>
+
+        {{#if user.profile}}
+        <div class="info-row">
+          <span class="label">Họ tên:</span>
+          <span class="value">{{user.profile.displayName}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Trường:</span>
+          <span class="value">{{user.profile.school}}</span>
+        </div>
+        <div class="info-row">
+          <span class="label">Lớp:</span>
+          <span class="value">{{user.profile.grade}}</span>
+        </div>
+        {{/if}}
+      </div>
+
+      <div class="actions">
+        <button onclick="window.history.back()" class="btn back-button">← Quay lại</button>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+</html>

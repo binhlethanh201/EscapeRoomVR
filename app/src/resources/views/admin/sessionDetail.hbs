@@ -61,11 +61,13 @@
                     {{/each}}
                 </div>
                 {{/if}}
-            </div>
+            </div>  
         </details>
         {{/each}}
-
-        <button onclick="window.location.href='/admin/sessions'" class="btn back-button">← Quay lại</button>
+        <div class="button-group">
+            <button onclick="window.location.href='/admin/sessions'" class="back-button">← Quay lại</button>
+            <button onclick="window.location.href='/admin/account/{{userId}}/view'" class="detail-button">Chi tiết tài khoản</button>
+        </div>
     </div>
 </body>
 
