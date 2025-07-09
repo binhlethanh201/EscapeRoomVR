@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Điền Vào Chỗ Trống</title>
-    <link rel="stylesheet" href="/css/room3/hotspot/desk.css">
+    <link rel="stylesheet" href="/css/room3/desk.css">
 </head>
 
 <body>
@@ -14,10 +14,18 @@
             <div id="question-container"></div>
         </div>
         <div class="row">
-            <div id="message" class="message" style="display: none;">{{message}}</div>
             <button id="submit-button" class="button">Gửi Câu Trả Lời</button>
             <button id="next-button" class="button" style="display: none;">Tiếp Theo</button>
             <button onclick="window.history.back();" class="button back-button">Quay lại</button>
+        </div>
+    </div>
+    <div id="popup-message" class="popup-overlay" style="display: none;">
+        <div class="popup-content">
+            <span id="popup-close" class="popup-close">&times;</span>
+            <h3 class="popup-title">Hoàn Thành!</h3>
+            <p id="popup-text" class="popup-text">{{message}}</p>
+            <button class="btn btn-success mt-3" onclick="window.location.href='http://localhost:8080/room3';">Quay lại
+                phòng</button>
         </div>
     </div>
 

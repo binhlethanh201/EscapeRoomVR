@@ -1,9 +1,7 @@
 <h1 class="mt-5 text-center">Câu Đố Văn Hoá</h1>
 <p class="instruction text-center mt-2">
-  Kéo các hình vào đúng vị trí tương ứng với làng nghề truyền thống.
+  Hãy ghép nối các làng nghề truyền thống với sản phẩm đặc trưng!
 </p>
-
-<!-- image pool -->
 <div class="row mb-4 mt-4">
   <div class="col-12 text-center">
     <div id="imagePool" class="dropZone">
@@ -14,10 +12,17 @@
     </div>
   </div>
 </div>
+<div id="popup-message" class="popup-overlay" style="display: none;">
+  <div class="popup-content">
+    <span id="popup-close" class="popup-close">&times;</span>
+    <h3 class="popup-title">Hoàn Thành!</h3>
+    <p id="popup-text" class="popup-text">{{message}}</p>
+    <button class="btn btn-success mt-3" onclick="window.location.href='http://localhost:8080/room3';">Quay lại
+      phòng</button>
+  </div>
+</div>
 
-<div id="message" class="message" style="display: none;">{{message}}</div>
 
-<!-- drop zones -->
 <div class="row text-center">
   <div class="col-lg-3">
     <div class="dropZone border" data-accept="item4"></div>
@@ -36,19 +41,14 @@
     <h5>Làng làm cốm Vòng</h5>
   </div>
 </div>
-
-<!-- buttons -->
 <div class="text-center mt-4">
   <button id="submitBtn" class="btn btn-primary">Gửi Câu Trả Lời</button>
   <button id="resetBtn" class="btn btn-secondary ms-2">Làm Lại</button>
   <h4 id="result" class="mt-3"></h4>
 </div>
 
-<!-- back button -->
 <div class="text-center mt-4">
   <a href="http://localhost:8080/room3" class="btn btn-outline-dark">Quay lại</a>
 </div>
-
-<!-- CSS and JS -->
-<link rel="stylesheet" href="/css/room3/hotspot/painting.css" />
+<link rel="stylesheet" href="/css/room3/painting.css" />
 <script src="/js/room3/painting.js" defer></script>

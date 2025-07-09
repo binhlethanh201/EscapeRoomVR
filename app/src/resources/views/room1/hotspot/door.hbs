@@ -6,116 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Door Lock</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/room1/door.css" />
 </head>
 
 <body class="flex items-center justify-center h-screen bg-[#1d1007]">
-    <div class="bg-[#3b2f2f] p-6 rounded-xl shadow-2xl text-center w-80 border-4 border-[#a67c52]">
-        <h1 class="text-2xl text-[#f5deb3] font-serif mb-4"> Nhập Mật Khẩu</h1>
-        <div id="display"
-            class="text-[#f5deb3] text-2xl font-mono tracking-widest mb-6 bg-[#5c4438] p-3 rounded shadow-inner">____
-        </div>
+    <div class="door-container">
+        <h1 class="title"> Nhập Mật Khẩu</h1>
+        <div id="display" class="code-display">____</div>
+
         <div class="grid grid-cols-3 gap-3 mb-4">
-            <button onclick="addNumber(1)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">1</button>
-            <button onclick="addNumber(2)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">2</button>
-            <button onclick="addNumber(3)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">3</button>
-            <button onclick="addNumber(4)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">4</button>
-            <button onclick="addNumber(5)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">5</button>
-            <button onclick="addNumber(6)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">6</button>
-            <button onclick="addNumber(7)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">7</button>
-            <button onclick="addNumber(8)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">8</button>
-            <button onclick="addNumber(9)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">9</button>
-            <button onclick="backspace()" class="action-btn bg-yellow-700 hover:bg-yellow-600">⌫</button>
-            <button onclick="addNumber(0)"
-                class="key-btn bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow">0</button>
-            <button onclick="clearCode()" class="action-btn bg-blue-700 hover:bg-blue-600">Clear</button>
+            <button onclick="addNumber(1)" class="key-btn">1</button>
+            <button onclick="addNumber(2)" class="key-btn">2</button>
+            <button onclick="addNumber(3)" class="key-btn">3</button>
+            <button onclick="addNumber(4)" class="key-btn">4</button>
+            <button onclick="addNumber(5)" class="key-btn">5</button>
+            <button onclick="addNumber(6)" class="key-btn">6</button>
+            <button onclick="addNumber(7)" class="key-btn">7</button>
+            <button onclick="addNumber(8)" class="key-btn">8</button>
+            <button onclick="addNumber(9)" class="key-btn">9</button>
+            <button onclick="backspace()" class="action-btn bg-yellow-700 hover:bg-yellow-600">Xoá</button>
+            <button onclick="addNumber(0)" class="key-btn">0</button>
+            <button onclick="clearCode()" class="action-btn bg-blue-700 hover:bg-blue-600">Xoá Hết</button>
         </div>
+
 
         <div class="flex justify-between">
-            <button onclick="window.location.href='http://localhost:8080/room1'"
-                class="bg-red-700 hover:bg-red-600 text-white px-4 py-2 rounded-md font-semibold">
-                ← Trở về
-            </button>
-            <button onclick="checkCode()"
-                class="bg-green-700 hover:bg-green-600 text-white px-4 py-2 rounded-md font-semibold">
-                Mở khóa
-            </button>
+            <button onclick="window.location.href='http://localhost:8080/room1'" class="btn-back">← Trở về</button>
+            <button onclick="checkCode()" class="btn-submit">Mở khóa</button>
         </div>
 
-        <p id="message" class="text-yellow-200 mt-4 font-medium h-6"></p>
+        <p id="message" class="feedback-text"></p>
     </div>
-    <style>
-        .key-btn {
-            @apply bg-yellow-800 text-white text-xl py-3 rounded-md font-bold hover:bg-yellow-700 shadow;
-        }
 
-        .action-btn {
-            @apply text-white text-base py-3 rounded-md font-semibold shadow;
-        }
-    </style>
+    <div id="complete-popup" class="popup-overlay" style="display: none;">
+        <div class="popup-content relative">
+            <span class="popup-close" onclick="closePopup()">×</span>
+            <h2 class="popup-title">{{completeMessage}}</h2>
+            <p class="popup-text">{{completeInfo}}</p>
+            <button onclick="window.location.href='http://localhost:8080';" class="btn-exit">Thoát</button>
+        </div>
+    </div>
 
     <script>
-        let code = [];
         const correctCode = {{ json unlockCodeArray }};
-
-        function addNumber(num) {
-            if (code.length < 4) {
-                code.push(num);
-                updateDisplay();
-            }
-        }
-
-        function backspace() {
-            code.pop();
-            updateDisplay();
-        }
-
-        function clearCode() {
-            code = [];
-            updateDisplay();
-            document.getElementById('message').textContent = '';
-        }
-
-        function updateDisplay() {
-            const display = document.getElementById('display');
-            let displayText = '';
-            for (let i = 0; i < 4; i++) {
-                displayText += code[i] !== undefined ? code[i] : '_';
-            }
-            display.textContent = displayText;
-        }
-
-        function checkCode() {
-            const message = document.getElementById('message');
-            if (code.length === 4) {
-                const isCorrect = code.every((num, index) => num === correctCode[index]);
-                if (isCorrect) {
-                    message.textContent = 'Mật khẩu đúng! Đang mở khóa...';
-                    fetch("http://localhost:3000/room1/complete", {
-                        method: "POST",
-                        credentials: "include",
-                    });
-                    setTimeout(() => {
-                        window.location.href = 'http://localhost:8080';
-                    }, 1000);
-                } else {
-                    message.textContent = "Sai mật khẩu. Hãy thử lại.";
-                    code = [];
-                    updateDisplay();
-                }
-            } else {
-                message.textContent = "Hãy nhập đủ 4 chữ số để mở khóa.";
-            }
-        }
     </script>
+    <script src="/js/room1/door.js"></script>
 </body>
 
 </html>

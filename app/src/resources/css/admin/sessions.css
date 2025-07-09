@@ -1,0 +1,85 @@
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+body {
+  background-color: #c8a88a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1e293b;
+  text-align: center;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+  overflow: hidden;
+}
+
+thead {
+  background-color: #334155;
+  color: #f1f5f9;
+}
+
+thead th {
+  padding: 12px 15px;
+  text-align: left;
+  font-weight: 700;
+  user-select: none;
+}
+
+tbody tr {
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background-color: #e0e7ff;
+}
+
+tbody td {
+  padding: 12px 15px;
+  vertical-align: middle;
+}
+
+tbody td a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+tbody td a:hover {
+  color: #3730a3;
+  text-decoration: underline;
+}
+
+.back-button {
+  display: block;
+  margin: 40px auto 0;
+  background-color: #4f46e5;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #4338ca;
+}

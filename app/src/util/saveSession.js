@@ -6,7 +6,6 @@ const Room2 = require("../app/models/room2");
 async function saveSession(req, room, type, name, data = {}) {
     const userId = req.session.userId;
     if (!userId) return;
-
     let session = await Session.findOne({ userId });
     if (!session) {
         session = new Session({
@@ -26,41 +25,32 @@ async function saveSession(req, room, type, name, data = {}) {
             },
         });
     }
-
-    // 🔧 BỔ SUNG: cập nhật roomsUnlocked nếu chưa có phòng hiện tại
     if (!session.gameData.progress.roomsUnlocked.includes(room)) {
         session.gameData.progress.roomsUnlocked.push(room);
         session.markModified("gameData.progress.roomsUnlocked");
     }
-
     if (!session.gameData.roomProgress[room]) {
         session.gameData.roomProgress[room] = createEmptyRoomProgress();
     }
-
     const roomProgress = session.gameData.roomProgress[room];
     roomProgress.attempts += 1;
     session.markModified(`gameData.roomProgress.${room}.attempts`);
-
     if (!roomProgress.hotspotProgress) {
         roomProgress.hotspotProgress = {};
     }
-
     if (!roomProgress.hotspotProgress[name]) {
         roomProgress.hotspotProgress[name] = [];
     }
-
     roomProgress.hotspotProgress[name].push({
         interactedAt: new Date(),
         type,
         data,
     });
-
     const roomModelMap = {
         room3: Room3,
         room1: Room1,
         room2: Room2,
     };
-
     const RoomModel = roomModelMap[room];
     if (RoomModel) {
         const roomData = await RoomModel.findById(room);
@@ -71,7 +61,6 @@ async function saveSession(req, room, type, name, data = {}) {
             session.gameData.totalCluesFound += 1;
         }
     }
-
     roomProgress.lastVisited = new Date();
     session.markModified("gameData.roomProgress." + room + ".hotspotProgress");
 
@@ -82,10 +71,8 @@ async function saveSession(req, room, type, name, data = {}) {
         }
         session.gameData.roomProgress[room].isCompleted = true;
     }
-
     await session.save();
 }
-
 function createEmptyRoomProgress() {
     return {
         status: "available",

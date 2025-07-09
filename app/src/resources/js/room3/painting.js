@@ -4,7 +4,6 @@ const submitBtn = document.getElementById("submitBtn");
 const result = document.getElementById("result");
 
 let draggedImgId = null;
-// Gán dragstart cho tất cả ảnh hiện tại (cả trong pool và drop zones)
 function addDragStartListeners() {
   document.querySelectorAll(".draggable-img").forEach((img) => {
     img.addEventListener("dragstart", (e) => {
@@ -17,8 +16,6 @@ function addDragStartListeners() {
 addDragStartListeners();
 [...dropZones, imagePool].forEach((zone) => {
   zone.addEventListener("dragover", (e) => e.preventDefault());
-
-  //event drop
   zone.addEventListener("drop", (e) => {
     e.preventDefault();
     const imgId = e.dataTransfer.getData("text/plain");
@@ -31,12 +28,10 @@ addDragStartListeners();
       if (oldImg) oldImg.remove();
     }
     zone.appendChild(img);
-    // Gán lại dragstart cho ảnh (vì img vừa chuyển vùng)
     addDragStartListeners();
   });
 });
 
-// submit button
 submitBtn.addEventListener("click", () => {
   let correct = 0;
   dropZones.forEach((zone) => {
@@ -50,13 +45,22 @@ submitBtn.addEventListener("click", () => {
   if (correct === dropZones.length) {
     result.textContent = "Chính Xác!";
     result.style.color = "green";
-    const messageEl = document.getElementById("message");
-    if (messageEl && messageEl.textContent.trim() !== "") {
-      messageEl.style.display = "block";
+    const popup = document.getElementById("popup-message");
+    const popupText = document.getElementById("popup-text");
+    if (popup && popupText && popupText.textContent.trim() !== "") {
+      popup.style.display = "flex";
     }
+    const popupClose = document.getElementById("popup-close");
+    if (popupClose) {
+      popupClose.addEventListener("click", () => {
+        popup.style.display = "none";
+        window.location.href = "http://localhost:8080/room3";
+      });
+    }
+
     setTimeout(() => {
       window.location.href = "http://localhost:8080/room3";
-    }, 2000);
+    }, 3000);
   } else {
     result.textContent = "Sai Rồi! Hãy Thử Lại.";
     result.style.color = "red";
@@ -73,17 +77,15 @@ submitBtn.addEventListener("click", () => {
   }
 });
 
-// reset button
 const resetBtn = document.getElementById("resetBtn");
 resetBtn.addEventListener("click", () => {
-  //Di chuyển lại imagePool
   dropZones.forEach((zone) => {
     const img = zone.querySelector("img");
     if (img) {
       imagePool.appendChild(img);
     }
-    zone.innerHTML = ""; // Reset drop zone text
+    zone.innerHTML = "";
   });
 
-  result.textContent = ""; //message clear
+  result.textContent = "";
 });

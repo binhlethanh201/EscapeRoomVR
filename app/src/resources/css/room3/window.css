@@ -1,11 +1,9 @@
-/* Reset */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Body */
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   background: linear-gradient(135deg, #f6f9fc, #d4eaf7);
@@ -17,7 +15,6 @@ body {
   padding: 20px;
 }
 
-/* Quiz Container */
 #quiz-container {
   background: #fff;
   border-radius: 18px;
@@ -33,7 +30,6 @@ body {
   transform: scale(1.01);
 }
 
-/* Title */
 #quiz-container h1 {
   text-align: center;
   font-size: 2.2rem;
@@ -43,7 +39,6 @@ body {
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Question */
 #question {
   font-size: 1.3rem;
   font-weight: 600;
@@ -51,7 +46,6 @@ body {
   color: #34495e;
 }
 
-/* Options */
 #options {
   display: flex;
   flex-direction: column;
@@ -79,7 +73,6 @@ body {
   border-color: #3399ff;
 }
 
-/* Button group */
 .button-group {
   margin-top: 30px;
   display: flex;
@@ -88,7 +81,6 @@ body {
   flex-wrap: wrap;
 }
 
-/* Buttons */
 .button {
   flex: 1;
   padding: 12px 16px;
@@ -100,7 +92,6 @@ body {
   transition: background-color 0.3s, transform 0.2s ease;
 }
 
-/* Submit */
 .submit-button {
   background: #3498db;
   color: #fff;
@@ -111,7 +102,6 @@ body {
   transform: scale(1.04);
 }
 
-/* Next */
 .next-button {
   background: #2ecc71;
   color: #fff;
@@ -122,7 +112,6 @@ body {
   transform: scale(1.04);
 }
 
-/* Back */
 .back-button {
   background: #cccccc;
   color: #333;
@@ -133,7 +122,6 @@ body {
   transform: scale(1.04);
 }
 
-/* Result */
 #result {
   margin-top: 24px;
   text-align: center;
@@ -150,10 +138,81 @@ body {
   color: #c0392b;
 }
 
-.message {
-  margin-top: 20px;
-  font-size: 1.2em;
-  color: #2c7a7b;
-  font-weight: bold;
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(30, 30, 30, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  backdrop-filter: blur(3px);
+  animation: fadeIn 0.3s ease;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  position: relative;
+  background: #ffffff;
+  padding: 40px 30px;
+  border-radius: 16px;
   text-align: center;
+  max-width: 420px;
+  width: 90%;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
+  animation: popupFade 0.3s ease-in-out;
+}
+
+@keyframes popupFade {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.popup-close {
+  position: absolute;
+  top: 14px;
+  right: 18px;
+  font-size: 24px;
+  color: #888;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.popup-close:hover {
+  color: #e74c3c;
+}
+
+.popup-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.popup-text {
+  font-size: 1.1rem;
+  color: #555;
 }

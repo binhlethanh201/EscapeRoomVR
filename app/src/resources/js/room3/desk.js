@@ -1,8 +1,18 @@
 let currentQuestionIndex = 0;
 
+function normalize(str) {
+  return str
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .trim()
+    .toLowerCase()
+    .replace(/\s+/g, " ");
+}
+
+
 function loadCurrentQuestion() {
   const container = document.getElementById("question-container");
-  container.innerHTML = ""; // Xóa nội dung cũ
+  container.innerHTML = "";
 
   const item = sentenceData[currentQuestionIndex];
   const questionBlock = document.createElement("div");
@@ -16,16 +26,14 @@ function loadCurrentQuestion() {
     <div id="result" class="result"></div>
   `;
   container.appendChild(questionBlock);
-
-  // Hiển thị lại nút gửi, ẩn nút tiếp theo
   document.getElementById("submit-button").style.display = "inline-block";
   document.getElementById("next-button").style.display = "none";
 }
 
 function checkAnswer() {
   const input = document.getElementById("answer-input");
-  const userAnswer = input.value.trim().toLowerCase();
-  const correctAnswer = sentenceData[currentQuestionIndex].answer.toLowerCase();
+  const userAnswer = normalize(input.value);
+  const correctAnswer = normalize(sentenceData[currentQuestionIndex].answer);
   const resultElement = document.getElementById("result");
 
   resultElement.classList.remove("correct", "incorrect");
@@ -33,25 +41,27 @@ function checkAnswer() {
   if (userAnswer === correctAnswer) {
     resultElement.textContent = "Chính xác!";
     resultElement.classList.add("correct");
-
-    // Ẩn nút gửi, hiện nút tiếp theo hoặc quay lại nếu hết câu
     document.getElementById("submit-button").style.display = "none";
     if (currentQuestionIndex < sentenceData.length - 1) {
       document.getElementById("next-button").style.display = "inline-block";
     } else {
-      const messageEl = document.getElementById("message");
-      if (messageEl && messageEl.textContent.trim() !== "") {
-        messageEl.style.display = "block";
-      }
+      const popup = document.getElementById("popup-message");
+      popup.style.display = "flex";
+      const popupClose = document.getElementById("popup-close");
+      popupClose.onclick = () => {
+        popup.style.display = "none";
+        window.location.href = "http://localhost:8080/room3";
+      };
       setTimeout(() => {
-        window.history.back();
-      }, 2000);
+        window.location.href = "http://localhost:8080/room3";
+      }, 3000);
     }
   } else {
     resultElement.textContent = "Sai rồi! Hãy thử lại.";
     resultElement.classList.add("incorrect");
   }
 }
+
 
 function goToNextQuestion() {
   currentQuestionIndex++;

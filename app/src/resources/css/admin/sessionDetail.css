@@ -1,0 +1,107 @@
+body {
+  background-color: #c8a88a;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #1e293b;
+}
+
+.username {
+  color: #4f46e5;
+}
+
+.room-container {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin-bottom: 30px;
+  box-shadow: 0 2px 6px rgb(0 0 0 / 0.1);
+}
+
+.room-header {
+  font-weight: 700;
+  font-size: 1.25rem;
+  margin-bottom: 15px;
+  color: #334155;
+}
+
+.room-name {
+  color: #2563eb;
+}
+
+.status {
+  font-weight: 600;
+  background-color: #e0e7ff;
+  padding: 2px 8px;
+  border-radius: 6px;
+  color: #3730a3;
+}
+
+.completed-yes {
+  color: #16a34a;
+  font-weight: 600;
+}
+
+.completed-no {
+  color: #dc2626;
+  font-weight: 600;
+}
+
+.hotspot-container {
+  margin-top: 20px;
+}
+
+.hotspot-group {
+  margin-bottom: 15px;
+}
+
+.hotspot-name {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.hotspot-group ul {
+  list-style: disc inside;
+  margin-top: 5px;
+  padding-left: 15px;
+  max-height: 180px;
+  overflow-y: auto;
+  color: #475569;
+  font-size: 0.9rem;
+}
+
+.completed-label {
+  color: #16a34a;
+  font-weight: 600;
+  margin-left: 8px;
+}
+
+.back-button {
+  display: block;
+  margin: 40px auto 0;
+  background-color: #4f46e5;
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 30px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+  background-color: #4338ca;
+}

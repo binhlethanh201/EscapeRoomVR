@@ -13,6 +13,15 @@ router.post("/account/:id/deactivate", authUtil, checkAdmin, AdminController.ina
 //[POST] /admin/account/:id/activate
 router.post("/account/:id/activate", authUtil, checkAdmin, AdminController.activateAccount);
 
+//[GET] /admin/account/:id
+router.get("/account/:id", authUtil, checkAdmin, AdminController.viewAccountDetail);
+
+//[GET] /admin/sessions
+router.get("/sessions", authUtil, checkAdmin, AdminController.getAllSessions);
+
+//[GET] /admin/session/:userId
+router.get("/session/:userId", authUtil, checkAdmin, AdminController.getSessionByUser);
+
 //[GET] /admin/dashboard
 router.get('/dashboard', checkAdmin, (req, res) => {
   res.render('admin/dashboard', {
@@ -25,9 +34,7 @@ async function checkAdmin(req, res, next) {
   try {
     const user = await User.findById(req.session.userId);
     if (!user || user.role !== "admin") {
-      return res.status(403).render("errors/403", {
-        message: "Bạn không có quyền truy cập trang này!",
-      });
+      return res.status(403).send("Bạn không có quyền truy cập trang này!");
     }
     next();
   } catch (error) {

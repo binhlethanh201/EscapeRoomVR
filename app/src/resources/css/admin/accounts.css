@@ -57,15 +57,6 @@ button {
     transition: background-color 0.3s ease;
 }
 
-button[type="submit"] {
-    background-color: #7a2105;
-    color: #fff;
-}
-
-button[type="submit"]:hover {
-    background-color: #5f1a04;
-}
-
 .back-button {
     margin-top: 24px;
     padding: 10px 20px;
@@ -81,4 +72,63 @@ button[type="submit"]:hover {
 
 .back-button:hover {
     background-color: #5f1a04;
+}
+
+.status-active {
+    color: #2e7d32;
+    font-weight: bold;
+}
+
+.status-inactive {
+    color: #c62828;
+    font-weight: bold;
+}
+
+.actions {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+.actions form {
+    display: inline;
+}
+
+.btn {
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.view-button {
+    background-color: #83aed4;
+}
+
+.view-button:hover {
+    background-color: #3f8fcb;
+}
+
+.activate-button {
+    background-color: #4caf50;
+}
+
+.activate-button:hover {
+    background-color: #3d9141;
+}
+
+.deactivate-button {
+    background-color: #e53935;
+}
+
+.deactivate-button:hover {
+    background-color: #c62828;
 }
