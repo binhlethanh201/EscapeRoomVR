@@ -17,10 +17,14 @@ class Room3Controller {
       const unlockCode = room?.unlockCode;
       const completeInfo = room?.completedInfor || "";
       const completeMessage = room?.completedMessage || "";
+      const hint = room?.hotspots?.door?.interactionData?.hint || "";
+      const instructions = room?.hotspots?.door?.interactionData?.instructions || "";
       res.render("room3/hotspot/door", {
         unlockCodeArray: unlockCode,
         completeInfo,
         completeMessage,
+        hint,
+        instructions,
       });
     } catch (error) {
       next(error);
