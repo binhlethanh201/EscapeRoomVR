@@ -80,23 +80,52 @@ class UserController {
   }
   // [POST] /profile/:id/changepassword
   async changePassword(req, res) {
-    const { oldPassword, newPassword } = req.body;
+    const { oldPassword, newPassword, confirmNewPassword } = req.body;
     const user = await User.findById(req.session.userId);
+
     if (!user || user._id.toString() !== req.params.id) {
       return res.status(403).send("Không có quyền đổi mật khẩu");
     }
+
+    if (newPassword !== confirmNewPassword) {
+      return res.render("user/changepassword", {
+        user: user.toObject(),
+        error: "Mật khẩu mới và mật khẩu xác nhận không khớp",
+      });
+    }
+
     const isMatch = await bcrypt.compare(oldPassword, user.password);
     if (!isMatch) {
       return res.render("user/changepassword", {
-        user,
+        user: user.toObject(),
         error: "Mật khẩu cũ không đúng",
       });
     }
+
     const salt = await bcrypt.genSalt(10);
     user.password = await bcrypt.hash(newPassword, salt);
     await user.save();
+
     res.redirect(`/profile/${user._id}`);
   }
+
+  // [GET] /setting
+  async setting(req, res) {
+    try {
+      const user = await User.findById(req.session.userId);
+      if (!user) {
+        return res.status(404).send("Không tìm thấy người dùng");
+      }
+      res.render("user/setting", {
+        user: user.toObject(),
+      });
+    } catch (err) {
+      console.error("Lỗi trang cài đặt:", err);
+      res.status(500).send("Lỗi server");
+    }
+  }
+  
+
 }
 
 module.exports = new UserController();

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const session = require('express-session');
 const cors = require("cors");
 const moment = require("moment");
+const Authentication = require("./app/models/authentication");
 const route = require("./routes");
 const app = express();
 const port = 3000;
@@ -16,6 +17,12 @@ const port = 3000;
 //connect database
 const db = require("./config/db");
 db.connect();
+//dọn dẹp token hết hạn
+(async () => {
+  const now = new Date();
+  await Authentication.deleteMany({ expiresAt: { $lt: now } });
+})();
+
 
 //tự động logout bằng cors ở localhost:8080 (pano-server)
 app.use(cors({
@@ -43,10 +50,10 @@ app.engine(
       json: function (context) {
         return JSON.stringify(context, null, 2);
       },
-        formatDate: (date) => {
-      return moment(date).format("HH:mm:ss - DD/MM/YYYY");
-    },
-    eq: (a, b) => a === b,
+      formatDate: (date) => {
+        return moment(date).format("HH:mm:ss - DD/MM/YYYY");
+      },
+      eq: (a, b) => a === b,
     },
   })
 );

@@ -5,6 +5,7 @@ const bcrypt = require("bcryptjs");
 const SECRET_KEY = "your_jwt_secret_key";
 
 class AuthController {
+
   //[POST] /login
   async login(req, res, next) {
     const { username, password } = req.body;
@@ -13,7 +14,7 @@ class AuthController {
       if (!user) {
         return res.render("user/login", {
           error: "Sai tên đăng nhập!",
-          username: username,
+          username,
         });
       }
       if (user.status !== "active") {
@@ -25,7 +26,7 @@ class AuthController {
       if (!user || !(await bcrypt.compare(password, user.password))) {
         return res.render("user/login", {
           error: "Sai tên đăng nhập hoặc mật khẩu!",
-          username: username,
+          username,
         });
       }
       const now = new Date();
@@ -35,6 +36,9 @@ class AuthController {
       user.currentSessionId = sessionId;
       user.lastLogin = now;
       await user.save();
+
+      await Authentication.deleteMany({ userId: user._id });
+
       const token = jwt.sign({ id: user._id }, SECRET_KEY, {
         expiresIn: "3h",
       });
@@ -44,6 +48,7 @@ class AuthController {
         expiresAt: new Date(now.getTime() + 3 * 60 * 60 * 1000),
       });
       await authToken.save();
+
       if (user.role === "admin") {
         return res.render("admin/dashboard", {
           username: user.username,
@@ -57,9 +62,8 @@ class AuthController {
           role: user.role,
         });
       }
-
     } catch (error) {
-      console.error(" Server error:", error);
+      console.error("Server error:", error);
       res.status(500).send("Server error");
     }
   }
@@ -99,6 +103,7 @@ class AuthController {
         error: "Email không hợp lệ!",
       });
     }
+
     const [usernameExists, emailExists] = await Promise.all([
       User.findOne({ username }),
       User.findOne({ email }),
@@ -123,6 +128,7 @@ class AuthController {
         error: errorMessage,
       });
     }
+
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const now = new Date();
@@ -145,6 +151,9 @@ class AuthController {
       currentSessionId: null,
     });
     await newUser.save();
+
+    await Authentication.deleteMany({ userId: newUser._id });
+
     const token = jwt.sign({ id: newUser._id }, SECRET_KEY, {
       expiresIn: "3h",
     });
@@ -154,6 +163,7 @@ class AuthController {
       expiresAt: new Date(Date.now() + 3 * 60 * 60 * 1000),
     });
     await authToken.save();
+
     req.session.userId = newUser._id;
     req.session.sessionId = `session_${Date.now()}`;
     res.redirect("/home");

@@ -7,6 +7,10 @@ const User = require("../app/models/user");
 //[GET] /admin/accounts
 router.get("/accounts", authUtil, checkAdmin, AdminController.getUsers);
 
+//[GET] /admin/account/:id/view
+router.get("/account/:id/view", authUtil, checkAdmin, AdminController.viewAccountReadOnly);
+
+
 //[POST] /admin/account/:id/deactivate
 router.post("/account/:id/deactivate", authUtil, checkAdmin, AdminController.inactivateAccount);
 
@@ -21,6 +25,13 @@ router.get("/sessions", authUtil, checkAdmin, AdminController.getAllSessions);
 
 //[GET] /admin/session/:userId
 router.get("/session/:userId", authUtil, checkAdmin, AdminController.getSessionByUser);
+
+// [GET] /admin/authtokens
+router.get("/authtokens", authUtil, checkAdmin, AdminController.getAllAuthTokens);
+
+// [GET] /admin/authtoken/:userId
+router.get("/authtoken/:userId", authUtil, checkAdmin, AdminController.getAuthTokensByUser);
+
 
 //[GET] /admin/dashboard
 router.get('/dashboard', checkAdmin, (req, res) => {

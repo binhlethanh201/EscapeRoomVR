@@ -1,21 +1,17 @@
 <!DOCTYPE html>
 <html lang="vi">
-
 <head>
   <meta charset="UTF-8">
   <title>Play now!</title>
   <link rel="stylesheet" href="/css/home.css">
 </head>
-
 <body>
   <div class="button-container">
-    <button onclick="redirectToLink()">Chơi Ngay!</button>
+    <button onclick="redirectToLink()">Chơi Ngay</button>
     <button>Tiếp Tục</button>
-    <button>Cài Đặt</button>
+   <button onclick="window.location.href='/setting'">Cài Đặt</button>
+
 </div>
-
-
-  <!-- Avatar Dropdown -->
   <div class="avatar-dropdown">
     <div class="avatar-wrapper">
       <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" id="avatarIcon" class="avatar-img" />
@@ -33,16 +29,10 @@
       </div>
     </div>
   </div>
-
-
-  <!-- Scripts -->
   <script>
-    //redirect to link
     function redirectToLink() {
       window.location.href = "http://localhost:8080";
     }
-
-    //drop down icon
     const avatarIcon = document.getElementById("avatarIcon");
     const dropdownMenu = document.getElementById("dropdownMenu");
     avatarIcon.addEventListener("click", () => {
@@ -53,8 +43,6 @@
         dropdownMenu.style.display = "none";
       }
     });
-
-    // Auto logout
     const expires = {{#if expiresInMs}}{{expiresInMs}}{{else}}10800000{{/if}};
     setTimeout(() => {
       window.location.href = "/";

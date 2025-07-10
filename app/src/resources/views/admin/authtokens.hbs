@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>Danh sách phiên đăng nhập</title>
+  <link rel="stylesheet" href="/css/admin/authtokens.css" />
+</head>
+
+<body>
+  <div class="container">
+    <h2 class="title">Danh sách phiên đăng nhập</h2>
+
+    <table class="token-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Thời gian tạo</th>
+          <th>Thời gian hết hạn</th>
+          <th>Chi tiết</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each tokens}}
+        <tr>
+          <td>{{userId}}</td>
+          <td>{{formatDate createdAt}}</td>
+          <td>{{formatDate expiresAt}}</td>
+          <td>
+            <a href="/admin/authtoken/{{userId}}" class="detail-link">Xem</a>
+          </td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+
+    <button onclick="window.location.href='/admin/dashboard'" class="back-button">← Quay lại</button>
+  </div>
+</body>
+
+</html>
