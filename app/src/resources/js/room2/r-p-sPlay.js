@@ -20,34 +20,34 @@ function playGame(playerChoice) {
     let result = "";
 
     if (playerChoice === computerChoice) {
-        result = "IT'S A TIE!";
+        result = "HÒA!";
     } else {
         switch (playerChoice) {
             case "rock":
-                result = (computerChoice === "scissors") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "scissors") ? "BẠN THẮNG!" : "BẠN THUA!";
                 break;
             case "paper":
-                result = (computerChoice === "rock") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "rock") ? "BẠN THẮNG!" : "BẠN THUA!";
                 break;
             case "scissors":
-                result = (computerChoice === "paper") ? "YOU WIN!" : "YOU LOSE!";
+                result = (computerChoice === "paper") ? "BẠN THẮNG!" : "BẠN THUA!";
                 break;
         }
     }
 
-    playerDisplay.textContent = `PLAYER: ${playerChoice}`;
-    computerDisplay.textContent = `COMPUTER: ${computerChoice}`;
+    playerDisplay.textContent = `NGƯỜI CHƠI: ${playerChoice}`;
+    computerDisplay.textContent = `ĐỐI THỦ: ${computerChoice}`;
     resultDisplay.textContent = result;
 
     resultDisplay.classList.remove("greenText", "redText");
 
     switch (result) {
-        case "YOU WIN!":
+        case "BẠN THẮNG!":
             resultDisplay.classList.add("greenText");
             playerScore++;
             playerScoreDisplay.textContent = playerScore;
             break;
-        case "YOU LOSE!":
+        case "BẠN THUA!":
             resultDisplay.classList.add("redText");
             computerScore++;
             computerScoreDisplay.textContent = computerScore;
@@ -68,21 +68,21 @@ function showGameResult() {
     if (playerScore > computerScore) {
         messageContainer.style.display = "flex"; // Hiển thị message-container khi thắng
         messageButtons.innerHTML = `
-            <button onclick="window.location.href='http://localhost:8080/room2'">Back to Home</button>
+            <button onclick="window.location.href='http://localhost:8080/room2'">Thoát phòng</button>
         `;
     } else {
         gameOverlay.style.display = "flex"; // Hiển thị gameOverlay khi thua hoặc hòa
         if (playerScore < computerScore) {
-            overlayMessage.textContent = "Sorry, You Lost!";
+            overlayMessage.textContent = "BẠN ĐÃ THẤT BẠI!";
             overlayButtons.innerHTML = `
-                <button onclick="resetGame()">Play Again</button>
-                <button onclick="window.location.href='http://localhost:8080/room2'">Back to Home</button>
+                <button onclick="resetGame()">Chơi lại!</button>
+                <button onclick="window.location.href='http://localhost:8080/room2'">Quay về phòng</button>
             `;
         } else {
-            overlayMessage.textContent = "It's a Tie!";
+            overlayMessage.textContent = "BẠN ĐÃ HÒA!";
             overlayButtons.innerHTML = `
-                <button onclick="resetGame()">Play Again</button>
-                <button onclick="window.location.href='http://localhost:8080/room2'">Back to Home</button>
+                <button onclick="resetGame()">Chơi lại</button>
+                <button onclick="window.location.href='http://localhost:8080/room2'">Quay về phòng</button>
             `;
         }
     }
@@ -94,8 +94,8 @@ function resetGame() {
     turns = 0;
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
-    playerDisplay.textContent = "PLAYER: ";
-    computerDisplay.textContent = "COMPUTER: ";
+    playerDisplay.textContent = "NGƯỜI CHƠI: ";
+    computerDisplay.textContent = "ĐỐI THỦ: ";
     resultDisplay.textContent = "";
     resultDisplay.classList.remove("greenText", "redText");
     gameOverlay.style.display = "none";

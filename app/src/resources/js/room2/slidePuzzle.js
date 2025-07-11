@@ -121,7 +121,7 @@ const puzzleContainer = document.querySelector('.puzzle-container');
         window.onload = () => {
             puzzleContainer.style.display = 'flex';
             movesCount = 0;
-            moves.innerText = `Moves: ${movesCount}`;
+            moves.innerText = `Bước: ${movesCount}`;
             imagesArr = [];
             randomImages();
             generateGrid();
