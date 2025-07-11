@@ -1,6 +1,7 @@
 const User = require("../models/user");
 const bcrypt = require("bcryptjs");
 const { moongseToObject } = require("../../util/mongoose");
+const Session = require("../models/session");
 
 class UserController {
 
@@ -124,7 +125,52 @@ class UserController {
       res.status(500).send("Lỗi server");
     }
   }
-  
+
+  // [GET] /continue
+  async continueGame(req, res) {
+    try {
+      const userId = req.session.userId;
+      const session = await Session.findOne({ userId });
+      if (!session || !session.gameData || !session.gameData.roomProgress) {
+        return res.redirect("http://localhost:8080");
+      }
+      const roomTimes = Object.entries(session.gameData.roomProgress)
+        .filter(([_, data]) => data.lastVisited)
+        .map(([room, data]) => ({ room, time: new Date(data.lastVisited) }));
+      if (roomTimes.length === 0) {
+        return res.redirect("http://localhost:8080");
+      }
+      roomTimes.sort((a, b) => b.time - a.time);
+      const mostRecentRoom = roomTimes[0].room;
+      res.redirect(`http://localhost:8080/${mostRecentRoom}`);
+    } catch (err) {
+      console.error("Lỗi tiếp tục game:", err);
+      res.redirect("http://localhost:8080");
+    }
+  }
+
+  //[GET] /check-session
+  async checkSession(req, res) {
+    try {
+      const userId = req.session.userId;
+      const session = await Session.findOne({ userId });
+      if (session) {
+        return res.json({ hasSession: true });
+      } else {
+        return res.json({ hasSession: false });
+      }
+    } catch (err) {
+      console.error("Lỗi kiểm tra session:", err);
+      return res.status(500).json({ error: "Lỗi server" });
+    }
+  }
+
+  //[POST] /clear-session
+  async clearSession(req, res) {
+    const userId = req.session.userId;
+    await Session.deleteOne({ userId });
+    res.sendStatus(200);
+  }
 
 }
 

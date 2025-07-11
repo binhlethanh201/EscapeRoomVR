@@ -59,6 +59,15 @@ router.post("/resetpassword/:token", AuthController.resetPassword);
 //[GET] /setting
 router.get("/setting", authUtil, UserController.setting);
 
+// [GET] /continue
+router.get("/continue", authUtil, UserController.continueGame);
+
+//[GET] /check-session
+router.get("/check-session", authUtil, UserController.checkSession);
+
+//[POST] /clear-session
+router.post("/clear-session", authUtil, UserController.clearSession);
+
 //[GET] /home 
 router.get("/home", authUtil, async (req, res) => {
   const user = await User.findById(req.session.userId);

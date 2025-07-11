@@ -30,10 +30,14 @@ class Room1Controller {
       const unlockCode = room?.unlockCode;
       const completeInfo = room?.completedInfor || "";
       const completeMessage = room?.completedMessage || "";
+      const hint = room?.hotspots?.door?.interactionData?.hint || "";
+      const instructions = room?.hotspots?.door?.interactionData?.instructions || "";
       res.render("room1/hotspot/door", {
         unlockCodeArray: unlockCode.split("").map(Number),
         completeInfo,
         completeMessage,
+        hint,
+        instructions,
       });
     } catch (error) {
       next(error);

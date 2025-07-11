@@ -134,3 +134,84 @@ button:hover {
         transform: translateY(0);
     }
 }
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px 35px;
+    border-radius: 14px;
+    text-align: center;
+    max-width: 420px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+.modal-text {
+    font-size: 1.15rem;
+    margin-bottom: 28px;
+    color: #5f1a04;
+    font-weight: 600;
+}
+
+.modal-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.modal-buttons .btn {
+    padding: 14px 0;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.btn-continue {
+    background-color: #8f2e0b;
+    color: white;
+}
+
+.btn-continue:hover {
+    background-color: #6f2105;
+    box-shadow: 0 6px 16px rgba(111, 33, 5, 0.6);
+}
+
+.btn-newgame {
+    background-color: #a85c1b;
+    color: white;
+}
+
+.btn-newgame:hover {
+    background-color: #884710;
+    box-shadow: 0 6px 16px rgba(136, 71, 16, 0.6);
+}
+
+.btn-cancel {
+    background-color: #7a2105;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #5f1a04;
+    box-shadow: 0 6px 16px rgba(90, 27, 5, 0.6);
+}

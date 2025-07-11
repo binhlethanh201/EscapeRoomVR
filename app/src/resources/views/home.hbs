@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
   <meta charset="UTF-8">
   <title>Play now!</title>
   <link rel="stylesheet" href="/css/home.css">
 </head>
+
 <body>
   <div class="button-container">
-    <button onclick="redirectToLink()">Chơi Ngay</button>
-    <button>Tiếp Tục</button>
-   <button onclick="window.location.href='/setting'">Cài Đặt</button>
-
-</div>
+    <button onclick="redirectToLink()">Chơi Mới</button>
+    <button onclick="window.location.href='/continue'">Tiếp Tục</button>
+    <button onclick="window.location.href='/setting'">Cài Đặt</button>
+  </div>
   <div class="avatar-dropdown">
     <div class="avatar-wrapper">
       <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" id="avatarIcon" class="avatar-img" />
@@ -29,9 +30,40 @@
       </div>
     </div>
   </div>
+  <div id="gameModal" class="modal hidden">
+    <div class="modal-content">
+      <h4>Bạn đã có tiến trình trước đó. Bạn muốn:</h4>
+      <div class="modal-buttons">
+        <button id="continueBtn" class="btn btn-continue">▶️ Tiếp tục lần chơi trước</button>
+        <button id="newGameBtn" class="btn btn-newgame">🆕 Bắt đầu mới</button>
+        <button id="cancelBtn" class="btn btn-cancel">❌ Hủy</button>
+      </div>
+    </div>
+  </div>
+
   <script>
-    function redirectToLink() {
-      window.location.href = "http://localhost:8080";
+    async function redirectToLink() {
+      try {
+        const res = await fetch("/check-session");
+        const data = await res.json();
+        if (data.hasSession) {
+          document.getElementById("gameModal").classList.remove("hidden");
+          document.getElementById("continueBtn").onclick = () => {
+            window.location.href = "/continue";
+          };
+          document.getElementById("newGameBtn").onclick = async () => {
+            await fetch("/clear-session", { method: "POST" });
+            window.location.href = "http://localhost:8080";
+          };
+          document.getElementById("cancelBtn").onclick = () => {
+            document.getElementById("gameModal").classList.add("hidden");
+          };
+        } else {
+          window.location.href = "http://localhost:8080";
+        }
+      } catch (err) {
+        console.error("Lỗi khi kiểm tra session:", err);
+      }
     }
     const avatarIcon = document.getElementById("avatarIcon");
     const dropdownMenu = document.getElementById("dropdownMenu");
@@ -49,4 +81,5 @@
     }, expires);
   </script>
 </body>
+
 </html>
