@@ -5,16 +5,58 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Color-Coded Door Lock</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .popup-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+        .popup-content {
+            background: #2a1a0f;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            text-align: center;
+            border: 2px solid #3a1f0e;
+        }
+        .popup-title {
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .popup-text {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        .popup-button {
+            background-color: #2a9d8f;
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        .popup-button:hover {
+            background-color: #21867a;
+        }
+    </style>
 </head>
 <body class="flex items-center justify-center h-screen bg-[#1d1007]">
     <div class="absolute left-4 top-4">
         <button onclick="window.location.href='http://localhost:8080/room2'"
                 class="bg-[#3a1f0e] hover:bg-[#5a2f1e] text-white px-4 py-2 rounded-md font-medium shadow">
-            ← Back to Room 2
+            ← Quay lại phòng 2
         </button>
     </div>
     <div class="bg-white/10 p-6 rounded-2xl shadow-xl w-96 border-2 border-[#3a1f0e]">
-        <h2 class="text-2xl text-white font-semibold mb-6 text-center font-sans">Enter Door Code</h2>
+        <h2 class="text-2xl text-white font-semibold mb-6 text-center font-sans">Nhập mã phòng</h2>
         <p class="text-center text-white mb-4 font-medium">{{{hint}}}</p>
         <p class="text-center text-white mb-4">{{{instructions}}}</p>
         <div class="display text-white text-2xl mb-6 bg-[#2a1a0f] p-2 rounded-md text-center min-h-[30px]" id="display"></div>
@@ -38,6 +80,14 @@
             </button>
         </div>
         <div class="feedback text-white text-lg mt-4 text-center" id="feedback"></div>
+    </div>
+
+    <div class="popup-container" id="popup">
+        <div class="popup-content">
+            <h2 class="popup-title">{{completeMessage}}</h2>
+            <p class="popup-text">{{completeInfo}}</p>
+            <button class="popup-button" onclick="window.location.href='http://localhost:8080'">Thoát</button>
+        </div>
     </div>
 
     <script>
@@ -81,14 +131,12 @@
 
             const isCorrect = code.every((num, index) => num.toString() === correctCode[index]);
             if (isCorrect) {
-                feedback.textContent = 'Code correct! Redirecting...';
+                feedback.textContent = 'Code correct!';
                 fetch('http://localhost:3000/room2/complete', {
                     method: 'POST',
                     credentials: 'include',
                 });
-                setTimeout(() => {
-                    window.location.href='http://localhost:8080';
-                }, 1000);
+                document.getElementById('popup').style.display = 'flex';
             } else {
                 feedback.textContent = 'Incorrect code. Try again.';
                 code = [];

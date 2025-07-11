@@ -138,6 +138,11 @@
             margin-top: 525px;
         }
 
+        .popup-text{
+            font-size: 30px;
+            text-align: center;
+        }
+
         @media only screen and (max-width: 400px) {
             input, select {
                 width: 120px;

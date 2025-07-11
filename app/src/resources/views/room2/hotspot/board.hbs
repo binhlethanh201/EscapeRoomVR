@@ -1,29 +1,45 @@
-<h1>Rock - Paper - Scissors</h1>
-    
-    <div class="choices">
-        <button onclick="playGame('rock')">👊</button>
-        <button onclick="playGame('paper')">✋</button>
-        <button onclick="playGame('scissors')">✌</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock - Paper - Scissors</title>
+</head>
+<body>
+    <div class="game-container">
+        <h1>Rock - Paper - Scissors</h1>
+        <div class="choices">
+            <button onclick="playGame('rock')">👊</button>
+            <button onclick="playGame('paper')">✋</button>
+            <button onclick="playGame('scissors')">✌</button>
+        </div>
+
+        <div id="playerDisplay">PLAYER: </div>
+        <div id="computerDisplay">COMPUTER: </div>
+        <div id="resultDisplay"></div>
+
+        <div class="scoreDisplay">Player Score: 
+            <span id="playerScoreDisplay">0</span>
+        </div>
+
+        <div class="scoreDisplay">Computer Score: 
+            <span id="computerScoreDisplay">0</span>
+        </div>
+
+        <button id="backButton" onclick="window.location.href='http://localhost:8080/room2'">Quay lại</button>
+
+        <div id="gameOverlay">
+            <div id="overlayMessage"></div>
+            <div id="overlayButtons"></div>
+        </div>
+
+        <!-- Khối chứa gameMessage và nút -->
+        <div class="message-container">
+            <div id="gameMessage">{{#if message}}{{message}}{{else}}No message available{{/if}}</div>
+            <div id="messageButtons"></div>
+        </div>
     </div>
-
-    <div id="playerDisplay">PLAYER: </div>
-    <div id="computerDisplay">COMPUTER: </div>
-    <div id="resultDisplay"></div>
-
-    <div class="scoreDisplay">Player Score: 
-        <span id="playerScoreDisplay">0</span>
-    </div>
-
-    <div class="scoreDisplay">Computer Score: 
-        <span id="computerScoreDisplay">0</span>
-    </div>
-
-    <button id="backButton" onclick="window.location.href='http://localhost:8080/room2'">Quay lại</button>
-
-    <div id="gameOverlay">
-        <div id="overlayMessage"></div>
-        <div id="overlayButtons"></div>
-    </div>
-
-<link rel="stylesheet" href="/css/room2/demo.css" />
-<script src="/js/room2/r-p-sPlay.js"></script>
+    <link rel="stylesheet" href="/css/room2/demo.css" />
+    <script src="/js/room2/r-p-sPlay.js"></script>
+</body>
+</html>

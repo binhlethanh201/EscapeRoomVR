@@ -17,6 +17,8 @@ class Room2Controller {
     try {
       await saveSession(req, "room2", "hotspot", "painting");
       const room = await Room2.findById("room2");
+      console.log("Room data:", room); // Debug dữ liệu
+      console.log("Message:", room?.hotspots?.painting?.message); // Debug message
       res.render("room2/hotspot/painting", {
         message: room?.hotspots?.painting?.message || "",
         hint: room?.hotspots?.painting?.hint || "",
@@ -63,10 +65,14 @@ class Room2Controller {
       await saveSession(req, "room2", "hotspot", "door");
       const room = await Room2.findById("room2");
       const unlockCode = room?.unlockCode || [];
+      const completeInfo = room?.completedInfor || "";
+      const completeMessage = room?.completedMessage || "";
       res.render("room2/hotspot/door", {
         unlockCodeArray: unlockCode,
         hint: room?.hotspots?.door?.interactionData?.hint || "",
-        instructions: room?.hotspots?.door?.interactionData?.instructions || ""
+        instructions: room?.hotspots?.door?.interactionData?.instructions || "",
+        completeInfo,
+        completeMessage,
       });
     } catch (error) {
       next(error);
