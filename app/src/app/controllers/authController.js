@@ -36,8 +36,9 @@ class AuthController {
       user.currentSessionId = sessionId;
       user.lastLogin = now;
       await user.save();
+      await req.session.save();
 
-      await Authentication.deleteMany({ userId: user._id });
+      //await Authentication.deleteMany({ userId: user._id });
 
       const token = jwt.sign({ id: user._id }, SECRET_KEY, {
         expiresIn: "3h",
@@ -50,21 +51,13 @@ class AuthController {
       await authToken.save();
 
       if (user.role === "admin") {
-        return res.render("admin/dashboard", {
-          username: user.username,
-          id: user._id,
-        });
+        return res.redirect("/admin/dashboard");
       } else {
-        return res.render("home", {
-          expiresInMs: 3 * 60 * 60 * 1000,
-          username: user.username,
-          id: user._id,
-          role: user.role,
-        });
+        return res.redirect("/home");
       }
     } catch (error) {
-      console.error("Server error:", error);
-      res.status(500).send("Server error");
+      console.error("Login server error:", error);
+      return res.status(500).send("Internal server error during login");
     }
   }
 

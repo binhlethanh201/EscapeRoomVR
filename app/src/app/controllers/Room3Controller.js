@@ -30,7 +30,7 @@ class Room3Controller {
       next(error);
     }
   }
-
+  
   // [GET] /hotspot/desk
   async desk(req, res) {
     try {
