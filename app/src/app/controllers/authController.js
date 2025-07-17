@@ -22,7 +22,14 @@ class AuthController {
       req.session.userId = user._id;
       req.session.sessionId = sessionId;
       user.currentSessionId = sessionId;
+      req.session.ip = req.ip;
+      req.session.userAgent = req.get('User-Agent');
       user.lastLogin = now;
+      if (user.lastLoginIp && user.lastLoginIp !== req.ip) {
+        await Authentication.deleteMany({ userId: user._id });
+      }
+      user.currentSessionId = sessionId;
+      user.lastLoginIp = req.ip;
       await user.save();
       await req.session.save();
       const token = jwt.sign({ id: user._id }, SECRET_KEY, {
@@ -52,7 +59,7 @@ class AuthController {
       }
       req.session.destroy((err) => {
         if (err) { return res.status(500).send("Logout failed") }
-        res.redirect("/");
+        return res.redirect("/");
       });
     } catch (err) {
       console.error("Logout error:", err);
@@ -126,7 +133,11 @@ class AuthController {
     await authToken.save();
     req.session.userId = newUser._id;
     req.session.sessionId = `session_${Date.now()}`;
+    req.session.ip = req.ip;
+    req.session.userAgent = req.get('User-Agent');
+    await req.session.save();
     res.redirect("/home");
+
   }
 
   // [GET] /check-auth
