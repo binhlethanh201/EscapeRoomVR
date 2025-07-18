@@ -80,21 +80,21 @@ class Room2Controller {
   // [POST] /complete
   async complete(req, res) {
     try {
-        if (!req.session) {
-            throw new Error('Session is undefined');
-        }
-        await saveSession(req, 'room2', 'hotspot', 'door', {
-            isCompleted: true,
-        });
-        res.sendStatus(200);
+      if (!req.session) {
+        throw new Error('Session is undefined');
+      }
+      await saveSession(req, 'room2', 'hotspot', 'door', {
+        isCompleted: true,
+      });
+      res.sendStatus(200);
     } catch (error) {
-        console.error('Error completing room:', {
-            message: error.message,
-            stack: error.stack
-        });
-        res.status(500).send('Internal server error');
+      console.error('Error completing room:', {
+        message: error.message,
+        stack: error.stack
+      });
+      res.status(500).send('Internal server error');
     }
-}
+  }
 }
 
 module.exports = new Room2Controller();

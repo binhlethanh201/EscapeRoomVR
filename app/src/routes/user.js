@@ -6,9 +6,7 @@ const authUtil = require("../util/auth");
 const User = require("../app/models/user");
 
 //[POST] /login
-router.get("/", (req, res) => {
-  res.render("login");
-});
+router.get("/", (req, res) => { res.render("login"); });
 router.post("/login", AuthController.login);
 
 //[POST] /logout
@@ -25,33 +23,21 @@ router.post("/profile/:id/edit", authUtil, UserController.editProfile);
 
 //profile/changepassword
 //[GET] /profile/:id/changepassword
-router.get(
-  "/profile/:id/changepassword",
-  authUtil,
-  UserController.changePasswordForm
-);
+router.get("/profile/:id/changepassword", authUtil, UserController.changePasswordForm);
 //[POST] /profile/:id/changepassword
-router.post(
-  "/profile/:id/changepassword",
-  authUtil,
-  UserController.changePassword
-);
+router.post("/profile/:id/changepassword", authUtil, UserController.changePassword);
 
 //[GET] /check-auth
 router.get("/check-auth", AuthController.checkAuth);
 
 //register
 //[GET] /register
-router.get("/register", (req, res) => {
-  res.render("user/register");
-});
+router.get("/register", (req, res) => { res.render("user/register"); });
 //[POST] /register
 router.post("/register", AuthController.register);
 
 //forgot password
-router.get("/forgotpassword", (req, res) => {
-  res.render("user/forgotpassword");
-});
+router.get("/forgotpassword", (req, res) => { res.render("user/forgotpassword"); });
 router.post("/forgotpassword", AuthController.forgotPassword);
 router.get("/resetpassword/:token", AuthController.resetPasswordForm);
 router.post("/resetpassword/:token", AuthController.resetPassword);
@@ -68,9 +54,11 @@ router.get("/check-session", authUtil, UserController.checkSession);
 //[POST] /clear-session
 router.post("/clear-session", authUtil, UserController.clearSession);
 
-//[GET] /home 
+// [GET] /home 
 router.get("/home", authUtil, async (req, res) => {
   const user = await User.findById(req.session.userId);
+  if (!user) { return res.redirect("/") }
+  if (user.role === "admin") { return res.redirect("/admin/dashboard") }
   res.render("home", { username: user.username, id: user._id });
 });
 

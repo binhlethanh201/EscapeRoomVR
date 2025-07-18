@@ -1,7 +1,7 @@
 const Room1 = require("../models/room1");
 const saveSession = require("../../util/saveSession");
-class Room1Controller {
 
+class Room1Controller {
   //[GET] /hotspots/center
   async center(req, res, next) {
     await saveSession(req, "room1", "hotspot", "center");
@@ -39,17 +39,13 @@ class Room1Controller {
         hint,
         instructions,
       });
-    } catch (error) {
-      next(error);
-    }
+    } catch (error) { next(error) }
   }
 
   //[POST] /complete
   async complete(req, res) {
     try {
-      await saveSession(req, "room1", "hotspot", "door", {
-        isCompleted: true,
-      });
+      await saveSession(req, "room1", "hotspot", "door", { isCompleted: true });
       res.sendStatus(200);
     } catch (err) {
       console.error("Error completing room:", err);
@@ -62,4 +58,5 @@ class Room1Controller {
     res.render("room1");
   }
 }
+
 module.exports = new Room1Controller();

@@ -34,19 +34,13 @@ router.get("/authtoken/:userId", authUtil, checkAdmin, AdminController.getAuthTo
 
 
 //[GET] /admin/dashboard
-router.get('/dashboard', checkAdmin, (req, res) => {
-  res.render('admin/dashboard', {
-    username: req.session.username || 'Admin'
-  });
-});
+router.get('/dashboard', checkAdmin, (req, res) => { res.render('admin/dashboard', { username: req.session.username || 'Admin' }); });
 
 //middleware kiểm tra quyền admin
 async function checkAdmin(req, res, next) {
   try {
     const user = await User.findById(req.session.userId);
-    if (!user || user.role !== "admin") {
-      return res.status(403).send("Bạn không có quyền truy cập trang này!");
-    }
+    if (!user || user.role !== "admin") { return res.status(403).send("Bạn không có quyền truy cập trang này!"); }
     next();
   } catch (error) {
     console.error("Lỗi kiểm tra quyền admin:", error);
