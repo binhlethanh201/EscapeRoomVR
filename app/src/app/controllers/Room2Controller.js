@@ -17,8 +17,6 @@ class Room2Controller {
     try {
       await saveSession(req, "room2", "hotspot", "painting");
       const room = await Room2.findById("room2");
-      console.log("Room data:", room); // Debug dữ liệu
-      console.log("Message:", room?.hotspots?.painting?.message); // Debug message
       res.render("room2/hotspot/painting", {
         message: room?.hotspots?.painting?.message || "",
         hint: room?.hotspots?.painting?.hint || "",
